@@ -9,11 +9,11 @@
 <style>
 /* ── VARIÁVEIS LIGHT PREMIUM ───────────────── */
 :root {
-  --bg-nude:    #FBF9F6; /* Bege super clarinho, cheio de luz */
+  --bg-nude:    #FBF9F6;
   --bg-white:   #FFFFFF;
-  --bg-alt:     #F2EBE1; /* Nude um pouco mais escuro para destaque */
-  --text-dark:  #1A1A1A; /* Preto suave para leitura */
-  --text-muted: #737373; /* Cinza elegante */
+  --bg-alt:     #F2EBE1;
+  --text-dark:  #1A1A1A;
+  --text-muted: #737373;
   --black:      #000000;
   --transition: all 0.6s cubic-bezier(0.25, 1, 0.25, 1);
 }
@@ -48,15 +48,8 @@ nav.scrolled {
   box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
-.nav-logo {
-  display: flex; align-items: center; justify-content: center;
-  mix-blend-mode: multiply; /* Ajuda o JPEG a se misturar no fundo claro */
-}
-.nav-logo img {
-  height: 60px; width: auto; 
-  object-fit: contain;
-  transition: var(--transition);
-}
+.nav-logo { display: flex; align-items: center; justify-content: center; mix-blend-mode: multiply; }
+.nav-logo img { height: 60px; width: auto; object-fit: contain; transition: var(--transition); }
 nav.scrolled .nav-logo img { height: 48px; }
 
 .nav-links { display: flex; gap: 3rem; list-style: none; align-items: center; }
@@ -78,12 +71,12 @@ nav.scrolled .nav-logo img { height: 48px; }
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { background: var(--text-muted); color: var(--bg-white) !important; transform: translateY(-2px); }
 
-/* ── HERO SECTION (INÍCIO SEM IMAGEM) ───────── */
+/* ── HERO SECTION ───────────────────────────── */
 .hero {
   position: relative; min-height: 100vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: 0 5%;
-  background: radial-gradient(circle at center, var(--bg-white) 0%, var(--bg-nude) 100%);
+  background: radial-gradient(circle at top, var(--bg-white) 0%, var(--bg-nude) 100%);
 }
 
 .hero-subtitle {
@@ -98,14 +91,20 @@ nav.scrolled .nav-logo img { height: 48px; }
 .hero-title em { font-style: italic; color: var(--text-muted); }
 
 .btn-primary {
-  display: inline-block; padding: 1.2rem 3rem;
+  display: inline-flex; align-items: center; gap: 10px; padding: 1.2rem 3rem;
   background: var(--black); color: var(--bg-white);
   text-decoration: none; font-size: 0.75rem; letter-spacing: 0.25em;
   text-transform: uppercase; font-weight: 600;
-  transition: var(--transition); border: 1px solid var(--black);
+  transition: var(--transition); border: 1px solid var(--black); cursor: pointer;
 }
 .btn-primary:hover {
-  background: transparent; color: var(--black); transform: translateY(-5px);
+  background: transparent; color: var(--black); transform: translateY(-3px);
+}
+.btn-outline {
+  background: transparent; color: var(--black);
+}
+.btn-outline:hover {
+  background: var(--black); color: var(--bg-white);
 }
 
 /* ── SEÇÕES GERAIS ──────────────────────────── */
@@ -120,7 +119,7 @@ section { padding: 8rem 6%; }
   font-weight: 300; color: var(--black); line-height: 1.2;
 }
 
-/* ── SERVIÇOS (CARDS CLAROS) ────────────────── */
+/* ── SERVIÇOS ───────────────────────────────── */
 #servicos { background-color: var(--bg-white); }
 .services-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
@@ -138,23 +137,18 @@ section { padding: 8rem 6%; }
 .svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1rem; color: var(--black); }
 .svc-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
 
-/* ── NOSSO AMBIENTE (GALERIA EDITORIAL) ─────── */
+/* ── NOSSO AMBIENTE ─────────────────────────── */
 #ambiente { background: var(--bg-alt); }
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1rem;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem;
 }
-.gallery-item {
-  position: relative; overflow: hidden;
-}
+.gallery-item { position: relative; overflow: hidden; }
 .gallery-item img {
   width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
 }
 .gallery-item:hover img { transform: scale(1.05); }
 
-/* Tamanhos Mosaico */
 .img-1 { grid-column: span 12; height: 60vh; }
 .img-2 { grid-column: span 6; height: 50vh; }
 .img-3 { grid-column: span 6; height: 50vh; }
@@ -166,29 +160,80 @@ section { padding: 8rem 6%; }
   .gallery-item { grid-column: span 12 !important; height: 40vh !important; }
 }
 
-/* ── CONTATO ────────────────────────────────── */
-#contato { background-color: var(--bg-white); text-align: center; }
+/* ── CONTATO E MAPA ─────────────────────────── */
+#contato { background-color: var(--bg-white); padding: 8rem 6% 0 6%; }
+.contact-container {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: center; max-width: 1200px; margin: 0 auto;
+  padding-bottom: 8rem;
+}
+.contact-info { text-align: left; }
+.contact-info .section-title { font-size: 3rem; margin-bottom: 1.5rem; text-align: left; }
+.contact-details { margin-bottom: 2.5rem; }
+.contact-details p {
+  font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.6;
+}
+.contact-details strong { color: var(--black); font-weight: 600; }
 
-/* ── RODAPÉ ─────────────────────────────────── */
+.contact-map {
+  width: 100%; height: 450px; background: var(--bg-alt);
+  border-radius: 4px; overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+.contact-map iframe {
+  width: 100%; height: 100%; border: 0;
+  /* Filtro para o mapa ficar elegante e combinar com o site bege/cinza */
+  filter: grayscale(80%) contrast(1.1) opacity(0.9);
+  transition: filter 0.5s ease;
+}
+.contact-map iframe:hover { filter: grayscale(0%) contrast(1) opacity(1); }
+
+@media (max-width: 900px) {
+  .contact-container { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+  .contact-info .section-title { text-align: center; }
+  .contact-info { display: flex; flex-direction: column; align-items: center; }
+}
+
+/* ── RODAPÉ PROFISSIONAL ────────────────────── */
 footer {
-  padding: 3rem 6%; background: var(--bg-nude); text-align: center;
+  background: var(--bg-nude); padding: 5rem 6% 2rem 6%;
   border-top: 1px solid rgba(0,0,0,0.05);
 }
-.footer-logo img { height: 40px; margin-bottom: 1.5rem; mix-blend-mode: multiply; }
-.footer-text { font-size: 0.7rem; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; }
-
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  section { padding: 5rem 5%; }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem;
+  max-width: 1200px; margin: 0 auto 4rem auto;
 }
+.footer-brand img { height: 60px; mix-blend-mode: multiply; margin-bottom: 1.5rem; }
+.footer-brand p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 300px; }
+
+.footer-col h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+  color: var(--black); margin-bottom: 1.5rem; font-weight: 600;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.8rem; }
+.footer-col ul a {
+  color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
+  transition: var(--transition); text-transform: uppercase; letter-spacing: 0.1em;
+}
+.footer-col ul a:hover { color: var(--black); }
+
+.footer-bottom {
+  text-align: center; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.05);
+  font-size: 0.7rem; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+  .footer-brand p { margin: 0 auto; }
+}
+@media (max-width: 768px) { .nav-links { display: none; } }
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <a href="#" class="nav-logo">
-    <img src="logo_oficial.jpeg" alt="Ellen Karine Beauty Studio">
-  </a>
+  <a href="#" class="nav-logo"><img src="logo_oficial.jpeg" alt="Ellen Karine Beauty Studio"></a>
   <ul class="nav-links">
     <li><a href="#servicos">Especialidades</a></li>
     <li><a href="#ambiente">O Studio</a></li>
@@ -236,7 +281,6 @@ footer {
     <div class="section-eyebrow">Por Dentro do Studio</div>
     <h2 class="section-title">Nosso <em>Ambiente</em></h2>
   </div>
-  
   <div class="gallery-grid">
     <div class="gallery-item img-1 reveal"><img src="img_amplo.jpeg" alt="Visão Ampla do Studio"></div>
     <div class="gallery-item img-2 reveal"><img src="img_recepcao.jpeg" alt="Recepção"></div>
@@ -248,18 +292,63 @@ footer {
 </section>
 
 <section id="contato">
-  <div class="reveal">
-    <h2 class="section-title" style="margin-bottom: 1.5rem;">Pronta para a sua<br><em>transformação?</em></h2>
-    <p style="color: var(--text-muted); margin-bottom: 3rem; font-size: 1rem;">Rua Codó, 21, loja 07 - Filadélfia, Betim/MG</p>
-    <a href="https://wa.me/5531995812737" class="btn-primary" target="_blank">Falar com a Equipe</a>
+  <div class="contact-container reveal">
+    <div class="contact-info">
+      <div class="section-eyebrow">Visite o Studio</div>
+      <h2 class="section-title">Onde nos<br><em>encontrar</em></h2>
+      
+      <div class="contact-details">
+        <p><strong>Endereço:</strong><br>Rua Codó, 21, Loja 07<br>Bairro Filadélfia, Betim - MG</p>
+        <p style="margin-top: 1rem;"><strong>WhatsApp:</strong><br>(31) 99581-2737</p>
+      </div>
+
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Rua+Codó,+21,+loja+07,+Filadélfia,+Betim+-+MG" target="_blank" class="btn-primary btn-outline">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Traçar Rota no GPS
+      </a>
+    </div>
+
+    <div class="contact-map">
+      <iframe src="https://maps.google.com/maps?q=Rua%20Cod%C3%B3,%2021,%20Filad%C3%A9lfia,%20Betim%20-%20MG&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-logo">
-    <img src="logo_oficial.jpeg" alt="Logo">
+  <div class="footer-grid">
+    <div class="footer-brand reveal">
+      <img src="logo_oficial.jpeg" alt="Logo Ellen Karine">
+      <p>Um espaço focado em elevar a sua autoestima através de técnicas avançadas e um atendimento de excelência.</p>
+    </div>
+    
+    <div class="footer-col reveal" style="transition-delay: 0.1s;">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#servicos">Especialidades</a></li>
+        <li><a href="#ambiente">O Studio</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col reveal" style="transition-delay: 0.2s;">
+      <h4>Agendamento</h4>
+      <ul>
+        <li><a href="https://wa.me/5531995812737" target="_blank">WhatsApp</a></li>
+        <li><a href="#contato">Localização</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col reveal" style="transition-delay: 0.3s;">
+      <h4>Redes Sociais</h4>
+      <ul>
+        <li><a href="https://instagram.com/ellenkarinebeautystudio" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
   </div>
-  <p class="footer-text">&copy; 2026 Ellen Karine Beauty Studio. Todos os direitos reservados.</p>
+  
+  <div class="footer-bottom reveal" style="transition-delay: 0.4s;">
+    &copy; 2026 Ellen Karine Beauty Studio. Todos os direitos reservados.
+  </div>
 </footer>
 
 <script>
@@ -276,7 +365,6 @@ footer {
   const revealOnScroll = () => {
     const windowHeight = window.innerHeight;
     const elementVisible = 100;
-
     reveals.forEach((reveal) => {
       const elementTop = reveal.getBoundingClientRect().top;
       if (elementTop < windowHeight - elementVisible) {
