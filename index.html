@@ -15,6 +15,7 @@
   --text-dark:  #1A1A1A;
   --text-muted: #737373;
   --black:      #000000;
+  --gold:       #E4A853; /* Dourado suave para as estrelas */
   --transition: all 0.6s cubic-bezier(0.25, 1, 0.25, 1);
 }
 
@@ -91,21 +92,15 @@ nav.scrolled .nav-logo img { height: 48px; }
 .hero-title em { font-style: italic; color: var(--text-muted); }
 
 .btn-primary {
-  display: inline-flex; align-items: center; gap: 10px; padding: 1.2rem 3rem;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 1.2rem 3rem;
   background: var(--black); color: var(--bg-white);
   text-decoration: none; font-size: 0.75rem; letter-spacing: 0.25em;
   text-transform: uppercase; font-weight: 600;
   transition: var(--transition); border: 1px solid var(--black); cursor: pointer;
 }
-.btn-primary:hover {
-  background: transparent; color: var(--black); transform: translateY(-3px);
-}
-.btn-outline {
-  background: transparent; color: var(--black);
-}
-.btn-outline:hover {
-  background: var(--black); color: var(--bg-white);
-}
+.btn-primary:hover { background: transparent; color: var(--black); transform: translateY(-3px); }
+.btn-outline { background: transparent; color: var(--black); }
+.btn-outline:hover { background: var(--black); color: var(--bg-white); }
 
 /* ── SEÇÕES GERAIS ──────────────────────────── */
 section { padding: 8rem 6%; }
@@ -119,13 +114,13 @@ section { padding: 8rem 6%; }
   font-weight: 300; color: var(--black); line-height: 1.2;
 }
 
-/* ── SERVIÇOS ───────────────────────────────── */
+/* ── SERVIÇOS (AGORA COM 4 CARDS) ───────────── */
 #servicos { background-color: var(--bg-white); }
 .services-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
 }
 .svc-card {
-  background: var(--bg-nude); padding: 4rem 3rem;
+  background: var(--bg-nude); padding: 4rem 2.5rem;
   transition: var(--transition); text-align: center;
   border: 1px solid rgba(0,0,0,0.03);
 }
@@ -134,8 +129,8 @@ section { padding: 8rem 6%; }
   box-shadow: 0 15px 35px rgba(0,0,0,0.06); 
 }
 .svc-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--bg-alt); margin-bottom: 1rem; }
-.svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1rem; color: var(--black); }
-.svc-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
+.svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--black); }
+.svc-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
 
 /* ── NOSSO AMBIENTE ─────────────────────────── */
 #ambiente { background: var(--bg-alt); }
@@ -160,8 +155,53 @@ section { padding: 8rem 6%; }
   .gallery-item { grid-column: span 12 !important; height: 40vh !important; }
 }
 
+/* ── AVALIAÇÕES (NOVA SEÇÃO) ────────────────── */
+#avaliacoes { background-color: var(--bg-white); }
+.reviews-container {
+  display: grid; grid-template-columns: 1fr 2fr; gap: 3rem;
+  align-items: stretch;
+}
+
+/* Destaque Google */
+.google-card {
+  background: var(--bg-nude); padding: 2.5rem; border: 1px solid rgba(0,0,0,0.05);
+  display: flex; flex-direction: column; text-align: center; align-items: center;
+}
+.google-card-img {
+  width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 2rem;
+}
+.google-logo { width: 90px; margin-bottom: 1rem; }
+.google-rating {
+  font-family: 'Cormorant Garamond', serif; font-size: 4rem; line-height: 1; color: var(--black); margin-bottom: 0.5rem;
+}
+.google-stars { color: var(--gold); font-size: 1.5rem; margin-bottom: 1.5rem; letter-spacing: 2px; }
+.google-btn {
+  display: inline-block; padding: 0.8rem 2rem; border: 1px solid var(--black);
+  color: var(--black); text-decoration: none; font-size: 0.7rem; text-transform: uppercase;
+  letter-spacing: 0.15em; transition: var(--transition);
+}
+.google-btn:hover { background: var(--black); color: var(--bg-white); }
+
+/* Depoimentos Secundários */
+.testimonials-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+.testi-box {
+  background: var(--bg-nude); padding: 2.5rem; border: 1px solid rgba(0,0,0,0.03);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.testi-stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 1rem; }
+.testi-text { font-style: italic; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.95rem; }
+.testi-author { font-weight: 600; font-size: 0.85rem; color: var(--black); text-transform: uppercase; letter-spacing: 0.1em; }
+.testi-service { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+@media (max-width: 900px) {
+  .reviews-container { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+
 /* ── CONTATO E MAPA ─────────────────────────── */
-#contato { background-color: var(--bg-white); padding: 8rem 6% 0 6%; }
+#contato { background-color: var(--bg-alt); padding: 8rem 6% 0 6%; }
 .contact-container {
   display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
   align-items: center; max-width: 1200px; margin: 0 auto;
@@ -170,20 +210,15 @@ section { padding: 8rem 6%; }
 .contact-info { text-align: left; }
 .contact-info .section-title { font-size: 3rem; margin-bottom: 1.5rem; text-align: left; }
 .contact-details { margin-bottom: 2.5rem; }
-.contact-details p {
-  font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.6;
-}
+.contact-details p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.6; }
 .contact-details strong { color: var(--black); font-weight: 600; }
 
 .contact-map {
-  width: 100%; height: 450px; background: var(--bg-alt);
-  border-radius: 4px; overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  width: 100%; height: 450px; background: var(--bg-white);
+  border-radius: 4px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05);
 }
 .contact-map iframe {
-  width: 100%; height: 100%; border: 0;
-  /* Filtro para o mapa ficar elegante e combinar com o site bege/cinza */
-  filter: grayscale(80%) contrast(1.1) opacity(0.9);
+  width: 100%; height: 100%; border: 0; filter: grayscale(80%) contrast(1.1) opacity(0.9);
   transition: filter 0.5s ease;
 }
 .contact-map iframe:hover { filter: grayscale(0%) contrast(1) opacity(1); }
@@ -196,8 +231,7 @@ section { padding: 8rem 6%; }
 
 /* ── RODAPÉ PROFISSIONAL ────────────────────── */
 footer {
-  background: var(--bg-nude); padding: 5rem 6% 2rem 6%;
-  border-top: 1px solid rgba(0,0,0,0.05);
+  background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px solid rgba(0,0,0,0.05);
 }
 .footer-grid {
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem;
@@ -207,8 +241,7 @@ footer {
 .footer-brand p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 300px; }
 
 .footer-col h4 {
-  font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
-  color: var(--black); margin-bottom: 1.5rem; font-weight: 600;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--black); margin-bottom: 1.5rem; font-weight: 600;
 }
 .footer-col ul { list-style: none; }
 .footer-col ul li { margin-bottom: 0.8rem; }
@@ -237,13 +270,14 @@ footer {
   <ul class="nav-links">
     <li><a href="#servicos">Especialidades</a></li>
     <li><a href="#ambiente">O Studio</a></li>
+    <li><a href="#avaliacoes">Avaliações</a></li>
     <li><a href="#contato">Contato</a></li>
     <li><a href="https://wa.me/5531995812737" target="_blank" class="nav-cta">Agendar Horário</a></li>
   </ul>
 </nav>
 
 <section class="hero" id="home">
-  <div class="hero-subtitle reveal">Beauty Studio &bull; Betim, MG</div>
+  <div class="hero-subtitle reveal">Beauty Studio • Betim, MG</div>
   <h1 class="hero-title reveal" style="transition-delay: 0.2s;">
     Desperte a sua<br><em>melhor versão</em>
   </h1>
@@ -261,17 +295,22 @@ footer {
     <div class="svc-card reveal">
       <div class="svc-num">01</div>
       <h3>Maquiagem</h3>
-      <p>Técnicas refinadas para noivas, formaturas e eventos, com durabilidade extrema e produtos focados em realçar seus traços naturais.</p>
+      <p>Técnicas refinadas para noivas, formaturas e eventos, focadas em realçar seus traços naturais com alta durabilidade.</p>
     </div>
     <div class="svc-card reveal" style="transition-delay: 0.2s;">
       <div class="svc-num">02</div>
       <h3>Design de Olhar</h3>
-      <p>Harmonização facial através de Brow Lamination e Lash Lifting. Fios perfeitamente alinhados, naturais e incrivelmente elegantes.</p>
+      <p>Harmonização facial através de Brow Lamination e Lash Lifting. Fios perfeitamente alinhados, naturais e elegantes.</p>
     </div>
     <div class="svc-card reveal" style="transition-delay: 0.4s;">
       <div class="svc-num">03</div>
       <h3>Nail Design</h3>
       <p>Alongamentos e blindagens com acabamento realista e alta resistência. Suas unhas impecáveis para a rotina ou grandes momentos.</p>
+    </div>
+    <div class="svc-card reveal" style="transition-delay: 0.6s;">
+      <div class="svc-num">04</div>
+      <h3>Cabelos</h3>
+      <p>Penteados exclusivos, tratamentos profundos e coloração para garantir que seus fios reflitam sua identidade com saúde e brilho.</p>
     </div>
   </div>
 </section>
@@ -288,6 +327,55 @@ footer {
     <div class="gallery-item img-4 reveal"><img src="img_interno.jpeg" alt="Área Interna"></div>
     <div class="gallery-item img-5 reveal"><img src="img_espelhos.jpeg" alt="Espelhos"></div>
     <div class="gallery-item img-6 reveal"><img src="img_cadeiras.jpeg" alt="Cadeiras de Atendimento"></div>
+  </div>
+</section>
+
+<section id="avaliacoes">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Aprovação das Clientes</div>
+    <h2 class="section-title">O que dizem<br><em>sobre nós</em></h2>
+  </div>
+
+  <div class="reviews-container">
+    <div class="google-card reveal">
+      <img src="img_fachada.jpeg" alt="Fachada do Studio no Google" class="google-card-img">
+      
+      <svg class="google-logo" viewBox="0 0 90 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.8 14.1V18h6.5C18 20.3 15.6 23.6 11.8 23.6c-4.4 0-8.1-3.6-8.1-8.1s3.7-8.1 8.1-8.1c2 0 3.8.7 5.2 2l3-3C17.9 4.3 15.1 3 11.8 3 5.3 3 0 8.3 0 14.8s5.3 11.8 11.8 11.8c6.8 0 11.3-4.8 11.3-11.5 0-.8-.1-1.5-.2-2.2H11.8z" fill="#4285F4"/>
+        <path d="M32.8 9.5c-4 0-7.3 3.1-7.3 7.3 0 4.1 3.3 7.3 7.3 7.3 4 0 7.3-3.2 7.3-7.3 0-4.1-3.2-7.3-7.3-7.3zm0 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.3 0 4.2 1.9 4.2 4.4 0 2.5-1.9 4.4-4.2 4.4z" fill="#EA4335"/>
+        <path d="M48.8 9.5c-4 0-7.3 3.1-7.3 7.3 0 4.1 3.3 7.3 7.3 7.3 4 0 7.3-3.2 7.3-7.3 0-4.1-3.2-7.3-7.3-7.3zm0 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.3 0 4.2 1.9 4.2 4.4 0 2.5-1.9 4.4-4.2 4.4z" fill="#FBBC05"/>
+        <path d="M64 9.5c-3.8 0-7.1 3.1-7.1 7.3 0 4.1 3.2 7.3 7.1 7.3 2 0 3.6-.9 4.4-1.9v1.6c0 2.8-1.5 4.3-3.9 4.3-2 0-3.3-1.4-3.8-2.6l-2.7 1.1c.8 2 3 4.4 6.5 4.4 3.8 0 6.8-2.2 6.8-7.5V10h-2.9v1.5c-.8-.9-2.3-2-4.4-2zm.4 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.2 0 4 1.9 4 4.4.1 2.5-1.7 4.4-4 4.4z" fill="#4285F4"/>
+        <path d="M74.9 3.5v20H78v-20h-3.1z" fill="#34A853"/>
+        <path d="M86.1 21.1c-1.8 0-3.1-.8-3.8-2.4l10.4-4.3-.3-.8c-.7-2-2.7-4.1-5.7-4.1-3.6 0-6.7 3-6.7 7.3 0 4.1 3.1 7.3 7.1 7.3 3.3 0 5.2-2 6.1-3.2l-2.3-1.5c-.9 1.4-2.1 2.1-4.8 2.1zm-.2-8.6c1.2 0 2.3.6 2.7 1.6l-6.4 2.6c0-2.6 1.9-4.2 3.7-4.2z" fill="#EA4335"/>
+      </svg>
+      <div class="google-rating">5.0</div>
+      <div class="google-stars">★★★★★</div>
+      <a href="https://g.page/sua-pagina-aqui/review" target="_blank" class="google-btn">Ver no Google</a>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testi-box reveal" style="transition-delay: 0.2s;">
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"A Ellen transformou minha maquiagem de noiva em uma obra de arte. Fiquei absolutamente deslumbrante no dia mais especial da minha vida. Profissional impecável!"</p>
+        </div>
+        <div>
+          <div class="testi-author">Ana Paula M.</div>
+          <div class="testi-service">Maquiagem de Noiva</div>
+        </div>
+      </div>
+      
+      <div class="testi-box reveal" style="transition-delay: 0.4s;">
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Ambiente perfeito e a profissional é extremamente cuidadosa. Fiz o Lash Lifting e simplesmente parei de usar rímel. O resultado superou todas as expectativas."</p>
+        </div>
+        <div>
+          <div class="testi-author">Fernanda C.</div>
+          <div class="testi-service">Lash Lifting</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -327,6 +415,7 @@ footer {
         <li><a href="#home">Início</a></li>
         <li><a href="#servicos">Especialidades</a></li>
         <li><a href="#ambiente">O Studio</a></li>
+        <li><a href="#avaliacoes">Avaliações</a></li>
       </ul>
     </div>
 
@@ -347,7 +436,7 @@ footer {
   </div>
   
   <div class="footer-bottom reveal" style="transition-delay: 0.4s;">
-    &copy; 2026 Ellen Karine Beauty Studio. Todos os direitos reservados.
+    © 2026 Ellen Karine Beauty Studio. Todos os direitos reservados.
   </div>
 </footer>
 
