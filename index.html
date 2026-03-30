@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ellen Karine | Beauty Studio Premium</title>
+<title>Ellen Karine | Beauty Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
 <style>
-/* ── VARIÁVEIS DE ALTO PADRÃO ───────────────── */
+/* ── VARIÁVEIS LIGHT PREMIUM ───────────────── */
 :root {
-  --nude:       #EFEAE4; 
-  --nude-dark:  #D4C8BA;
-  --dark:       #080808; 
-  --dark-mid:   #121212;
-  --grey:       #2A2A2A; 
-  --text-muted: #8A8A8A;
-  --transition: all 0.5s cubic-bezier(0.25, 1, 0.25, 1);
+  --bg-nude:    #FBF9F6; /* Bege super clarinho, cheio de luz */
+  --bg-white:   #FFFFFF;
+  --bg-alt:     #F2EBE1; /* Nude um pouco mais escuro para destaque */
+  --text-dark:  #1A1A1A; /* Preto suave para leitura */
+  --text-muted: #737373; /* Cinza elegante */
+  --black:      #000000;
+  --transition: all 0.6s cubic-bezier(0.25, 1, 0.25, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,142 +23,139 @@ html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
   font-family: 'Nunito Sans', sans-serif;
-  background-color: var(--dark);
-  color: var(--nude);
+  background-color: var(--bg-nude);
+  color: var(--text-dark);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
 /* ── ANIMAÇÕES DE SCROLL (REVEAL) ───────────── */
-.reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
+.reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
 /* ── NAVEGAÇÃO ──────────────────────────────── */
 nav {
   position: fixed; top: 0; width: 100%; z-index: 1000;
-  padding: 1.2rem 6%; 
+  padding: 1.5rem 6%; 
   display: flex; align-items: center; justify-content: space-between;
   transition: var(--transition);
-  border-bottom: 1px solid transparent;
+  background-color: transparent;
 }
 nav.scrolled {
-  background: rgba(8, 8, 8, 0.85);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(239, 234, 228, 0.05);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   padding: 0.8rem 6%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
-/* TRATAMENTO PROFISSIONAL PARA O LOGO JPEG */
 .nav-logo {
   display: flex; align-items: center; justify-content: center;
-  overflow: hidden; border-radius: 4px;
+  mix-blend-mode: multiply; /* Ajuda o JPEG a se misturar no fundo claro */
 }
 .nav-logo img {
-  height: 55px; width: auto; 
-  object-fit: cover;
+  height: 60px; width: auto; 
+  object-fit: contain;
   transition: var(--transition);
 }
-nav.scrolled .nav-logo img { height: 45px; }
+nav.scrolled .nav-logo img { height: 48px; }
 
 .nav-links { display: flex; gap: 3rem; list-style: none; align-items: center; }
 .nav-links a {
-  font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--text-muted); text-decoration: none; transition: var(--transition);
-  position: relative;
+  font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-dark); text-decoration: none; transition: var(--transition);
+  position: relative; font-weight: 600;
 }
 .nav-links a::after {
   content: ''; position: absolute; bottom: -4px; left: 0;
-  width: 0; height: 1px; background: var(--nude); transition: var(--transition);
+  width: 0; height: 1px; background: var(--black); transition: var(--transition);
 }
-.nav-links a:hover { color: var(--nude); }
 .nav-links a:hover::after { width: 100%; }
-.nav-cta {
-  border: 1px solid rgba(239, 234, 228, 0.3); padding: 0.6rem 1.5rem;
-  color: var(--nude) !important;
-}
-.nav-cta:hover { background: var(--nude); color: var(--dark) !important; }
 
-/* ── HERO SECTION ───────────────────────────── */
+.nav-cta {
+  background: var(--black); color: var(--bg-white) !important;
+  padding: 0.8rem 1.8rem; border-radius: 2px;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--text-muted); color: var(--bg-white) !important; transform: translateY(-2px); }
+
+/* ── HERO SECTION (INÍCIO SEM IMAGEM) ───────── */
 .hero {
   position: relative; min-height: 100vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; overflow: hidden; padding: 0 5%;
+  text-align: center; padding: 0 5%;
+  background: radial-gradient(circle at center, var(--bg-white) 0%, var(--bg-nude) 100%);
 }
-.hero-bg {
-  position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.9) 100%), url('img_interno.jpeg') center/cover no-repeat;
-  animation: bgZoom 20s infinite alternate;
-}
-@keyframes bgZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
 
 .hero-subtitle {
-  font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
-  color: var(--nude-dark); margin-bottom: 2rem;
+  font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 2rem; font-weight: 600;
 }
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 300; line-height: 1.1;
-  margin-bottom: 2.5rem;
+  font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 300; line-height: 1.05;
+  color: var(--black); margin-bottom: 2.5rem;
 }
-.hero-title em { font-style: italic; color: var(--nude-dark); }
+.hero-title em { font-style: italic; color: var(--text-muted); }
 
 .btn-primary {
   display: inline-block; padding: 1.2rem 3rem;
-  background: var(--nude); color: var(--dark);
+  background: var(--black); color: var(--bg-white);
   text-decoration: none; font-size: 0.75rem; letter-spacing: 0.25em;
   text-transform: uppercase; font-weight: 600;
-  transition: var(--transition); border: 1px solid var(--nude);
+  transition: var(--transition); border: 1px solid var(--black);
 }
 .btn-primary:hover {
-  background: transparent; color: var(--nude); transform: translateY(-5px);
+  background: transparent; color: var(--black); transform: translateY(-5px);
 }
 
 /* ── SEÇÕES GERAIS ──────────────────────────── */
-section { padding: 10rem 6%; }
-.section-header { text-align: center; margin-bottom: 5rem; }
+section { padding: 8rem 6%; }
+.section-header { text-align: center; margin-bottom: 4rem; }
 .section-eyebrow {
-  font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 1rem;
+  font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 1rem; font-weight: 600;
 }
 .section-title {
   font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 300; color: var(--nude);
+  font-weight: 300; color: var(--black); line-height: 1.2;
 }
 
-/* ── SERVIÇOS ───────────────────────────────── */
+/* ── SERVIÇOS (CARDS CLAROS) ────────────────── */
+#servicos { background-color: var(--bg-white); }
 .services-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px;
-  background: rgba(239, 234, 228, 0.05); border: 1px solid rgba(239, 234, 228, 0.05);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
 }
 .svc-card {
-  background: var(--dark); padding: 4rem 3rem;
-  transition: var(--transition); position: relative; cursor: default;
+  background: var(--bg-nude); padding: 4rem 3rem;
+  transition: var(--transition); text-align: center;
+  border: 1px solid rgba(0,0,0,0.03);
 }
-.svc-card:hover { background: var(--dark-mid); transform: translateY(-10px); z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-.svc-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: rgba(239,234,228,0.1); margin-bottom: 1.5rem; }
-.svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1rem; font-weight: 400; }
-.svc-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
+.svc-card:hover { 
+  background: var(--bg-white); transform: translateY(-10px); 
+  box-shadow: 0 15px 35px rgba(0,0,0,0.06); 
+}
+.svc-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--bg-alt); margin-bottom: 1rem; }
+.svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1rem; color: var(--black); }
+.svc-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
 
 /* ── NOSSO AMBIENTE (GALERIA EDITORIAL) ─────── */
-#ambiente { background: var(--dark-mid); }
+#ambiente { background: var(--bg-alt); }
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
 }
 .gallery-item {
-  position: relative; overflow: hidden; border-radius: 2px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  position: relative; overflow: hidden;
 }
 .gallery-item img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 1s cubic-bezier(0.2, 1, 0.3, 1);
-  filter: grayscale(30%);
+  transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
 }
-.gallery-item:hover img { transform: scale(1.08); filter: grayscale(0%); }
+.gallery-item:hover img { transform: scale(1.05); }
 
-/* Organização de Tamanhos Estilo Revista */
-.img-1 { grid-column: span 12; height: 60vh; } /* Amplo / Fachada */
+/* Tamanhos Mosaico */
+.img-1 { grid-column: span 12; height: 60vh; }
 .img-2 { grid-column: span 6; height: 50vh; }
 .img-3 { grid-column: span 6; height: 50vh; }
 .img-4 { grid-column: span 4; height: 40vh; }
@@ -169,18 +166,20 @@ section { padding: 10rem 6%; }
   .gallery-item { grid-column: span 12 !important; height: 40vh !important; }
 }
 
+/* ── CONTATO ────────────────────────────────── */
+#contato { background-color: var(--bg-white); text-align: center; }
+
 /* ── RODAPÉ ─────────────────────────────────── */
 footer {
-  padding: 4rem 6%; background: #050505; text-align: center;
-  border-top: 1px solid rgba(239, 234, 228, 0.05);
+  padding: 3rem 6%; background: var(--bg-nude); text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.05);
 }
-.footer-logo { margin-bottom: 2rem; }
-.footer-logo img { height: 40px; filter: grayscale(100%) opacity(0.5); }
-.footer-text { font-size: 0.7rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; }
+.footer-logo img { height: 40px; margin-bottom: 1.5rem; mix-blend-mode: multiply; }
+.footer-text { font-size: 0.7rem; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; }
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
-  section { padding: 6rem 5%; }
+  section { padding: 5rem 5%; }
 }
 </style>
 </head>
@@ -199,13 +198,12 @@ footer {
 </nav>
 
 <section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-subtitle reveal">Betim, MG</div>
+  <div class="hero-subtitle reveal">Beauty Studio &bull; Betim, MG</div>
   <h1 class="hero-title reveal" style="transition-delay: 0.2s;">
-    A arte da sua<br><em>verdadeira beleza</em>
+    Desperte a sua<br><em>melhor versão</em>
   </h1>
-  <div class="reveal" style="transition-delay: 0.4s; margin-top: 2rem;">
-    <a href="https://wa.me/5531995812737" class="btn-primary" target="_blank">Agendar Experiência</a>
+  <div class="reveal" style="transition-delay: 0.4s; margin-top: 1.5rem;">
+    <a href="https://wa.me/5531995812737" class="btn-primary" target="_blank">Agendar Atendimento</a>
   </div>
 </section>
 
@@ -217,18 +215,18 @@ footer {
   <div class="services-grid">
     <div class="svc-card reveal">
       <div class="svc-num">01</div>
-      <h3>Maquiagem de Alto Padrão</h3>
-      <p>Técnicas refinadas para noivas, formaturas e editoriais, com durabilidade extrema e produtos de luxo focados em realçar os seus traços.</p>
+      <h3>Maquiagem</h3>
+      <p>Técnicas refinadas para noivas, formaturas e eventos, com durabilidade extrema e produtos focados em realçar seus traços naturais.</p>
     </div>
     <div class="svc-card reveal" style="transition-delay: 0.2s;">
       <div class="svc-num">02</div>
       <h3>Design de Olhar</h3>
-      <p>Harmonização facial através de Brow Lamination e Lash Lifting. Fios perfeitamente alinhados, naturais e elegantes.</p>
+      <p>Harmonização facial através de Brow Lamination e Lash Lifting. Fios perfeitamente alinhados, naturais e incrivelmente elegantes.</p>
     </div>
     <div class="svc-card reveal" style="transition-delay: 0.4s;">
       <div class="svc-num">03</div>
       <h3>Nail Design</h3>
-      <p>Alongamentos e blindagens com acabamento ultra realista e resistência. Suas unhas impecáveis para a rotina ou grandes eventos.</p>
+      <p>Alongamentos e blindagens com acabamento realista e alta resistência. Suas unhas impecáveis para a rotina ou grandes momentos.</p>
     </div>
   </div>
 </section>
@@ -249,10 +247,10 @@ footer {
   </div>
 </section>
 
-<section id="contato" style="text-align: center;">
+<section id="contato">
   <div class="reveal">
-    <h2 class="section-title" style="margin-bottom: 1.5rem;">Pronta para sua<br><em>transformação?</em></h2>
-    <p style="color: var(--text-muted); margin-bottom: 3rem; font-size: 0.9rem;">Rua Codó, 21, loja 07 - Filadélfia, Betim/MG</p>
+    <h2 class="section-title" style="margin-bottom: 1.5rem;">Pronta para a sua<br><em>transformação?</em></h2>
+    <p style="color: var(--text-muted); margin-bottom: 3rem; font-size: 1rem;">Rua Codó, 21, loja 07 - Filadélfia, Betim/MG</p>
     <a href="https://wa.me/5531995812737" class="btn-primary" target="_blank">Falar com a Equipe</a>
   </div>
 </section>
@@ -265,7 +263,6 @@ footer {
 </footer>
 
 <script>
-  // Efeito de fundo transparente no Menu
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -275,7 +272,6 @@ footer {
     }
   });
 
-  // Animação de entrada dos elementos (Reveal)
   const reveals = document.querySelectorAll('.reveal');
   const revealOnScroll = () => {
     const windowHeight = window.innerHeight;
@@ -289,7 +285,7 @@ footer {
     });
   };
   window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll(); // Trigger na carga inicial
+  revealOnScroll();
 </script>
 
 </body>
