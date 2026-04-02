@@ -6,7 +6,6 @@
 <title>Ellen Karine | Beauty Studio</title>
 
 <link rel="icon" type="image/jpeg" href="favicon.jpg">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
 <style>
@@ -24,83 +23,33 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
-
-body {
-  font-family: 'Nunito Sans', sans-serif;
-  background-color: var(--bg-nude);
-  color: var(--text-dark);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+body { font-family: 'Nunito Sans', sans-serif; background-color: var(--bg-nude); color: var(--text-dark); overflow-x: hidden; }
 
 /* ── ANIMAÇÕES DE SCROLL ───────────── */
 .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
 /* ── NAVEGAÇÃO ──────────────────────────────── */
-nav {
-  position: fixed; top: 0; width: 100%; z-index: 1000;
-  padding: 1.5rem 6%; 
-  display: flex; align-items: center; justify-content: space-between;
-  transition: var(--transition);
-  background-color: transparent;
-}
-nav.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 0.8rem 6%;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-}
-
+nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1.5rem 6%; display: flex; align-items: center; justify-content: space-between; transition: var(--transition); background-color: transparent; }
+nav.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 0.8rem 6%; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
 .nav-logo { display: flex; align-items: center; justify-content: center; mix-blend-mode: multiply; }
 .nav-logo img { height: 60px; width: auto; object-fit: contain; transition: var(--transition); }
 nav.scrolled .nav-logo img { height: 48px; }
 
 .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
-.nav-links a {
-  font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--text-dark); text-decoration: none; transition: var(--transition);
-  position: relative; font-weight: 600; display: flex; align-items: center;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -4px; left: 0;
-  width: 0; height: 1px; background: var(--black); transition: var(--transition);
-}
+.nav-links a { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dark); text-decoration: none; position: relative; font-weight: 600; display: flex; align-items: center; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--black); transition: var(--transition); }
 .nav-links a:hover::after { width: 100%; }
-
-.nav-cta {
-  background: var(--black); color: var(--bg-white) !important;
-  padding: 0.8rem 1.8rem; border-radius: 2px; margin-left: 1rem;
-}
+.nav-cta { background: var(--black); color: var(--bg-white) !important; padding: 0.8rem 1.8rem; border-radius: 2px; margin-left: 1rem; }
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { background: var(--text-muted); color: var(--bg-white) !important; transform: translateY(-2px); }
 
-/* ── HERO SECTION ───────────────────────────── */
-.hero {
-  position: relative; min-height: 100vh;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 0 5%;
-  background: radial-gradient(circle at top, var(--bg-white) 0%, var(--bg-nude) 100%);
-}
-
-.hero-subtitle {
-  font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 2rem; font-weight: 600;
-}
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 300; line-height: 1.05;
-  color: var(--black); margin-bottom: 2.5rem;
-}
+/* ── HERO ───────────────────────────── */
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 5%; background: radial-gradient(circle at top, var(--bg-white) 0%, var(--bg-nude) 100%); }
+.hero-subtitle { font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; font-weight: 600; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 300; line-height: 1.05; color: var(--black); margin-bottom: 2.5rem; }
 .hero-title em { font-style: italic; color: var(--text-dark); font-weight: 400; }
-
-.btn-primary {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 1.2rem 3rem;
-  background: var(--black); color: var(--bg-white);
-  text-decoration: none; font-size: 0.75rem; letter-spacing: 0.25em;
-  text-transform: uppercase; font-weight: 600;
-  transition: var(--transition); border: 1px solid var(--black); cursor: pointer;
-}
+.btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 1.2rem 3rem; background: var(--black); color: var(--bg-white); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600; transition: var(--transition); border: 1px solid var(--black); cursor: pointer; }
 .btn-primary:hover { background: transparent; color: var(--black); transform: translateY(-3px); }
 .btn-outline { background: transparent; color: var(--black); }
 .btn-outline:hover { background: var(--black); color: var(--bg-white); }
@@ -108,52 +57,31 @@ nav.scrolled .nav-logo img { height: 48px; }
 /* ── SEÇÕES GERAIS ──────────────────────────── */
 section { padding: 8rem 6%; }
 .section-header { text-align: center; margin-bottom: 4rem; }
-.section-eyebrow {
-  font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 1rem; font-weight: 600;
-}
-.section-title {
-  font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 300; color: var(--black); line-height: 1.2;
-}
+.section-eyebrow { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; font-weight: 600; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; color: var(--black); line-height: 1.2; }
 
-/* ── SERVIÇOS (CARDS COM LINKS) ──────────────── */
-#servicos { background-color: var(--bg-white); }
-.services-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;
-}
-.svc-card {
-  background: var(--bg-nude); padding: 4rem 2.5rem;
-  transition: var(--transition); text-align: center;
-  border: 1px solid rgba(0,0,0,0.03); text-decoration: none; display: block;
-}
-.svc-card:hover { 
-  background: var(--bg-white); transform: translateY(-10px); 
-  box-shadow: 0 15px 35px rgba(0,0,0,0.06); 
-}
+/* ── SOBRE O SALÃO ──────────────────────────── */
+#sobre { background-color: var(--bg-white); }
+.sobre-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+.sobre-img { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.sobre-text p { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+/* ── SERVIÇOS ───────────────────────────────── */
+#servicos { background-color: var(--bg-nude); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+.svc-card { background: var(--bg-white); padding: 3rem 2rem; transition: var(--transition); text-align: center; border: 1px solid rgba(0,0,0,0.03); text-decoration: none; display: block; }
+.svc-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.06); border-color: var(--gold); }
 .svc-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--bg-alt); margin-bottom: 1rem; transition: var(--transition); }
-.svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1rem; color: var(--black); }
-.svc-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; }
-
-.svc-link-text {
-  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--black); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;
-}
-.svc-card:hover .svc-num { color: var(--gold); }
-.svc-card:hover .svc-link-text { color: var(--gold); }
+.svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--black); }
+.svc-link-text { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); font-weight: 600; margin-top: 1.5rem; display: inline-block; }
+.svc-card:hover .svc-num, .svc-card:hover .svc-link-text { color: var(--gold); }
 
 /* ── NOSSO AMBIENTE ─────────────────────────── */
-#ambiente { background: var(--bg-alt); }
-.gallery-grid {
-  display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem;
-}
+#ambiente { background: var(--bg-white); }
+.gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
 .gallery-item { position: relative; overflow: hidden; }
-.gallery-item img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
-}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1); }
 .gallery-item:hover img { transform: scale(1.05); }
-
 .img-1 { grid-column: span 12; height: 60vh; }
 .img-2 { grid-column: span 6; height: 50vh; }
 .img-3 { grid-column: span 6; height: 50vh; }
@@ -161,108 +89,53 @@ section { padding: 8rem 6%; }
 .img-5 { grid-column: span 4; height: 40vh; }
 .img-6 { grid-column: span 4; height: 40vh; }
 
-@media (max-width: 900px) {
-  .gallery-item { grid-column: span 12 !important; height: 40vh !important; }
-}
-
 /* ── AVALIAÇÕES ────────────────── */
-#avaliacoes { background-color: var(--bg-white); }
-.reviews-container {
-  display: grid; grid-template-columns: 1fr 2fr; gap: 3rem;
-  align-items: stretch;
-}
-
-.google-card {
-  background: var(--bg-nude); padding: 2.5rem; border: 1px solid rgba(0,0,0,0.05);
-  display: flex; flex-direction: column; text-align: center; align-items: center;
-}
+#avaliacoes { background-color: var(--bg-nude); }
+.reviews-container { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: stretch; }
+.google-card { background: var(--bg-white); padding: 2.5rem; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; text-align: center; align-items: center; }
 .google-card-img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 2rem; }
 .google-logo { width: 90px; margin-bottom: 1rem; }
 .google-rating { font-family: 'Cormorant Garamond', serif; font-size: 4rem; line-height: 1; color: var(--black); margin-bottom: 0.5rem; }
 .google-stars { color: var(--gold); font-size: 1.5rem; margin-bottom: 1.5rem; letter-spacing: 2px; }
-.google-btn {
-  display: inline-block; padding: 0.8rem 2rem; border: 1px solid var(--black);
-  color: var(--black); text-decoration: none; font-size: 0.7rem; text-transform: uppercase;
-  letter-spacing: 0.15em; transition: var(--transition);
-}
+.google-btn { display: inline-block; padding: 0.8rem 2rem; border: 1px solid var(--black); color: var(--black); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; transition: var(--transition); }
 .google-btn:hover { background: var(--black); color: var(--bg-white); }
-
 .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-.testi-box {
-  background: var(--bg-nude); padding: 2.5rem; border: 1px solid rgba(0,0,0,0.03);
-  display: flex; flex-direction: column; justify-content: space-between;
-}
+.testi-box { background: var(--bg-white); padding: 2.5rem; border: 1px solid rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
 .testi-stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 1rem; }
 .testi-text { font-style: italic; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.95rem; }
 .testi-author { font-weight: 600; font-size: 0.85rem; color: var(--black); text-transform: uppercase; letter-spacing: 0.1em; }
-.testi-service { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.3rem; }
-
-@media (max-width: 900px) {
-  .reviews-container { grid-template-columns: 1fr; }
-  .testimonials-grid { grid-template-columns: 1fr; }
-}
 
 /* ── CONTATO E MAPA ─────────────────────────── */
-#contato { background-color: var(--bg-alt); padding: 8rem 6% 0 6%; }
-.contact-container {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-  align-items: center; max-width: 1200px; margin: 0 auto;
-  padding-bottom: 8rem;
-}
-.contact-info { text-align: left; }
+#contato { background-color: var(--bg-white); padding: 8rem 6% 0 6%; }
+.contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; padding-bottom: 8rem; }
 .contact-info .section-title { font-size: 3rem; margin-bottom: 1.5rem; text-align: left; }
 .contact-details { margin-bottom: 2.5rem; }
 .contact-details p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.6; }
 .contact-details strong { color: var(--black); font-weight: 600; }
-
-.contact-map {
-  width: 100%; height: 450px; background: var(--bg-white);
-  border-radius: 4px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-}
-.contact-map iframe {
-  width: 100%; height: 100%; border: 0; filter: grayscale(80%) contrast(1.1) opacity(0.9);
-  transition: filter 0.5s ease;
-}
+.contact-map { width: 100%; height: 450px; background: var(--bg-alt); border-radius: 4px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.contact-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(80%) contrast(1.1) opacity(0.9); transition: filter 0.5s ease; }
 .contact-map iframe:hover { filter: grayscale(0%) contrast(1) opacity(1); }
 
+/* ── RESPONSIVO ─────────────────────────────── */
 @media (max-width: 900px) {
-  .contact-container { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+  .sobre-container, .reviews-container, .testimonials-grid, .contact-container { grid-template-columns: 1fr; text-align: center; }
   .contact-info .section-title { text-align: center; }
-  .contact-info { display: flex; flex-direction: column; align-items: center; }
-}
-
-/* ── RODAPÉ PROFISSIONAL ────────────────────── */
-footer {
-  background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px solid rgba(0,0,0,0.05);
-}
-.footer-grid {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem;
-  max-width: 1200px; margin: 0 auto 4rem auto;
-}
-.footer-brand img { height: 60px; mix-blend-mode: multiply; margin-bottom: 1.5rem; }
-.footer-brand p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 300px; }
-
-.footer-col h4 {
-  font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--black); margin-bottom: 1.5rem; font-weight: 600;
-}
-.footer-col ul { list-style: none; }
-.footer-col ul li { margin-bottom: 0.8rem; }
-.footer-col ul a {
-  color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
-  transition: var(--transition); text-transform: uppercase; letter-spacing: 0.1em;
-}
-.footer-col ul a:hover { color: var(--black); }
-
-.footer-bottom {
-  text-align: center; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.05);
-  font-size: 0.7rem; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase;
-}
-
-@media (max-width: 900px) {
-  .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
-  .footer-brand p { margin: 0 auto; }
+  .gallery-item { grid-column: span 12 !important; height: 40vh !important; }
 }
 @media (max-width: 768px) { .nav-links { display: none; } }
+
+/* ── RODAPÉ ────────────────────── */
+footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px solid rgba(0,0,0,0.05); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto 4rem auto; }
+.footer-brand img { height: 60px; mix-blend-mode: multiply; margin-bottom: 1.5rem; }
+.footer-brand p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 300px; }
+.footer-col h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--black); margin-bottom: 1.5rem; font-weight: 600; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.8rem; }
+.footer-col ul a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: var(--transition); text-transform: uppercase; letter-spacing: 0.1em; }
+.footer-col ul a:hover { color: var(--black); }
+.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.05); font-size: 0.7rem; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; } .footer-brand p { margin: 0 auto; } }
 </style>
 </head>
 <body>
@@ -270,20 +143,16 @@ footer {
 <nav id="nav">
   <a href="#" class="nav-logo"><img src="logo_oficial.jpeg" alt="Ellen Karine Beauty Studio"></a>
   <ul class="nav-links">
-    <li><a href="#servicos">Especialidades</a></li>
-    <li><a href="#ambiente">O Studio</a></li>
-    <li><a href="#avaliacoes">Avaliações</a></li>
+    <li><a href="#sobre">Sobre o Salão</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#ambiente">Ambiente</a></li>
     <li><a href="#contato">Contato</a></li>
     <li>
       <a href="https://www.instagram.com/ellenkarinebeautystudio/" target="_blank" title="Siga no Instagram" style="padding: 0.5rem 0;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-        </svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
       </a>
     </li>
-    <li><a href="https://wa.me/5531995812737" target="_blank" class="nav-cta">Agendar Horário</a></li>
+    <li><a href="https://wa.me/5531995812737" target="_blank" class="nav-cta">Agendar</a></li>
   </ul>
 </nav>
 
@@ -297,6 +166,20 @@ footer {
   </div>
 </section>
 
+<section id="sobre">
+  <div class="sobre-container reveal">
+    <div>
+      <img src="img_recepcao.jpeg" alt="Interior do Salão" class="sobre-img">
+    </div>
+    <div class="sobre-text">
+      <div class="section-eyebrow">A Nossa Essência</div>
+      <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Sobre o <em>Salão</em></h2>
+      <p>No Ellen Karine Beauty Studio, acreditamos que a beleza vai muito além da estética. Trata-se de acolhimento, cuidado e de como você se sente ao se olhar no espelho.</p>
+      <p>Nosso espaço foi cuidadosamente planejado em Betim para oferecer uma experiência de luxo e tranquilidade. Com uma equipe de especialistas e produtos de alta qualidade, garantimos que cada momento aqui seja dedicado exclusivamente a realçar o que você tem de melhor.</p>
+    </div>
+  </div>
+</section>
+
 <section id="servicos">
   <div class="section-header reveal">
     <div class="section-eyebrow">Nosso Menu</div>
@@ -304,39 +187,30 @@ footer {
   </div>
   
   <div class="services-grid">
-    <a href="maquiagem.html" target="_blank" class="svc-card reveal">
+    <a href="maquiagem.html" class="svc-card reveal">
       <div class="svc-num">01</div>
       <h3>Maquiagem</h3>
-      <p>Arte e precisão em cada traço — do cotidiano ao grande evento, sempre valorizando sua identidade.</p>
-      <div class="svc-link-text">Ver detalhes &rarr;</div>
+      <div class="svc-link-text">Ver detalhes →</div>
     </a>
-
-    <a href="cabelos.html" target="_blank" class="svc-card reveal" style="transition-delay: 0.2s;">
+    <a href="cabelo.html" class="svc-card reveal" style="transition-delay: 0.1s;">
       <div class="svc-num">02</div>
-      <h3>Cabelos</h3>
-      <p>Tratamentos e serviços capilares com os melhores produtos para transformar e cuidar dos seus fios.</p>
-      <div class="svc-link-text">Ver detalhes &rarr;</div>
+      <h3>Cabelo</h3>
+      <div class="svc-link-text">Ver detalhes →</div>
     </a>
-
-    <a href="brow.html" target="_blank" class="svc-card reveal" style="transition-delay: 0.4s;">
+    <a href="cilios-sobrancelha.html" class="svc-card reveal" style="transition-delay: 0.2s;">
       <div class="svc-num">03</div>
-      <h3>Brow Lamination</h3>
-      <p>Técnica que redefine e disciplina as sobrancelhas com resultado impecável e natural de longa duração.</p>
-      <div class="svc-link-text">Ver detalhes &rarr;</div>
+      <h3>Cílios e Sobrancelha</h3>
+      <div class="svc-link-text">Ver detalhes →</div>
     </a>
-
-    <a href="lash.html" target="_blank" class="svc-card reveal" style="transition-delay: 0.6s;">
+    <a href="unhas.html" class="svc-card reveal" style="transition-delay: 0.3s;">
       <div class="svc-num">04</div>
-      <h3>Lash Lifting</h3>
-      <p>Permanente de cílios com curvatura natural. Olhar marcante por até 8 semanas, sem extensão.</p>
-      <div class="svc-link-text">Ver detalhes &rarr;</div>
+      <h3>Unhas</h3>
+      <div class="svc-link-text">Ver detalhes →</div>
     </a>
-
-    <a href="unhas.html" target="_blank" class="svc-card reveal" style="transition-delay: 0.8s;">
+    <a href="spa-pes.html" class="svc-card reveal" style="transition-delay: 0.4s;">
       <div class="svc-num">05</div>
-      <h3>Nail Design</h3>
-      <p>Nail design que une estética, saúde e tendências para mãos que falam por você em qualquer ocasião.</p>
-      <div class="svc-link-text">Ver detalhes &rarr;</div>
+      <h3>Spa dos Pés</h3>
+      <div class="svc-link-text">Ver detalhes →</div>
     </a>
   </div>
 </section>
@@ -361,44 +235,28 @@ footer {
     <div class="section-eyebrow">Aprovação das Clientes</div>
     <h2 class="section-title">O que dizem<br><em>sobre nós</em></h2>
   </div>
-
   <div class="reviews-container">
     <div class="google-card reveal">
-      <img src="img_fachada.jpeg" alt="Fachada do Studio no Google" class="google-card-img">
-      <svg class="google-logo" viewBox="0 0 90 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11.8 14.1V18h6.5C18 20.3 15.6 23.6 11.8 23.6c-4.4 0-8.1-3.6-8.1-8.1s3.7-8.1 8.1-8.1c2 0 3.8.7 5.2 2l3-3C17.9 4.3 15.1 3 11.8 3 5.3 3 0 8.3 0 14.8s5.3 11.8 11.8 11.8c6.8 0 11.3-4.8 11.3-11.5 0-.8-.1-1.5-.2-2.2H11.8z" fill="#4285F4"/>
-        <path d="M32.8 9.5c-4 0-7.3 3.1-7.3 7.3 0 4.1 3.3 7.3 7.3 7.3 4 0 7.3-3.2 7.3-7.3 0-4.1-3.2-7.3-7.3-7.3zm0 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.3 0 4.2 1.9 4.2 4.4 0 2.5-1.9 4.4-4.2 4.4z" fill="#EA4335"/>
-        <path d="M48.8 9.5c-4 0-7.3 3.1-7.3 7.3 0 4.1 3.3 7.3 7.3 7.3 4 0 7.3-3.2 7.3-7.3 0-4.1-3.2-7.3-7.3-7.3zm0 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.3 0 4.2 1.9 4.2 4.4 0 2.5-1.9 4.4-4.2 4.4z" fill="#FBBC05"/>
-        <path d="M64 9.5c-3.8 0-7.1 3.1-7.1 7.3 0 4.1 3.2 7.3 7.1 7.3 2 0 3.6-.9 4.4-1.9v1.6c0 2.8-1.5 4.3-3.9 4.3-2 0-3.3-1.4-3.8-2.6l-2.7 1.1c.8 2 3 4.4 6.5 4.4 3.8 0 6.8-2.2 6.8-7.5V10h-2.9v1.5c-.8-.9-2.3-2-4.4-2zm.4 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.2 0 4 1.9 4 4.4.1 2.5-1.7 4.4-4 4.4z" fill="#4285F4"/>
-        <path d="M74.9 3.5v20H78v-20h-3.1z" fill="#34A853"/>
-        <path d="M86.1 21.1c-1.8 0-3.1-.8-3.8-2.4l10.4-4.3-.3-.8c-.7-2-2.7-4.1-5.7-4.1-3.6 0-6.7 3-6.7 7.3 0 4.1 3.1 7.3 7.1 7.3 3.3 0 5.2-2 6.1-3.2l-2.3-1.5c-.9 1.4-2.1 2.1-4.8 2.1zm-.2-8.6c1.2 0 2.3.6 2.7 1.6l-6.4 2.6c0-2.6 1.9-4.2 3.7-4.2z" fill="#EA4335"/>
-      </svg>
+      <img src="img_fachada.jpeg" alt="Fachada" class="google-card-img">
+      <svg class="google-logo" viewBox="0 0 90 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.8 14.1V18h6.5C18 20.3 15.6 23.6 11.8 23.6c-4.4 0-8.1-3.6-8.1-8.1s3.7-8.1 8.1-8.1c2 0 3.8.7 5.2 2l3-3C17.9 4.3 15.1 3 11.8 3 5.3 3 0 8.3 0 14.8s5.3 11.8 11.8 11.8c6.8 0 11.3-4.8 11.3-11.5 0-.8-.1-1.5-.2-2.2H11.8z" fill="#4285F4"/><path d="M32.8 9.5c-4 0-7.3 3.1-7.3 7.3 0 4.1 3.3 7.3 7.3 7.3 4 0 7.3-3.2 7.3-7.3 0-4.1-3.2-7.3-7.3-7.3zm0 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.3 0 4.2 1.9 4.2 4.4 0 2.5-1.9 4.4-4.2 4.4z" fill="#EA4335"/><path d="M48.8 9.5c-4 0-7.3 3.1-7.3 7.3 0 4.1 3.3 7.3 7.3 7.3 4 0 7.3-3.2 7.3-7.3 0-4.1-3.2-7.3-7.3-7.3zm0 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.3 0 4.2 1.9 4.2 4.4 0 2.5-1.9 4.4-4.2 4.4z" fill="#FBBC05"/><path d="M64 9.5c-3.8 0-7.1 3.1-7.1 7.3 0 4.1 3.2 7.3 7.1 7.3 2 0 3.6-.9 4.4-1.9v1.6c0 2.8-1.5 4.3-3.9 4.3-2 0-3.3-1.4-3.8-2.6l-2.7 1.1c.8 2 3 4.4 6.5 4.4 3.8 0 6.8-2.2 6.8-7.5V10h-2.9v1.5c-.8-.9-2.3-2-4.4-2zm.4 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.2 0 4 1.9 4 4.4.1 2.5-1.7 4.4-4 4.4z" fill="#4285F4"/><path d="M74.9 3.5v20H78v-20h-3.1z" fill="#34A853"/><path d="M86.1 21.1c-1.8 0-3.1-.8-3.8-2.4l10.4-4.3-.3-.8c-.7-2-2.7-4.1-5.7-4.1-3.6 0-6.7 3-6.7 7.3 0 4.1 3.1 7.3 7.1 7.3 3.3 0 5.2-2 6.1-3.2l-2.3-1.5c-.9 1.4-2.1 2.1-4.8 2.1zm-.2-8.6c1.2 0 2.3.6 2.7 1.6l-6.4 2.6c0-2.6 1.9-4.2 3.7-4.2z" fill="#EA4335"/></svg>
       <div class="google-rating">5.0</div>
       <div class="google-stars">★★★★★</div>
       <a href="https://g.page/r/CWYjzbGFV-khEBM/review" target="_blank" class="google-btn">Ver no Google</a>
     </div>
-
     <div class="testimonials-grid">
       <div class="testi-box reveal" style="transition-delay: 0.2s;">
         <div>
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"A Ellen transformou minha maquiagem de noiva em uma obra de arte. Fiquei absolutamente deslumbrante no dia mais especial da minha vida. Profissional impecável!"</p>
+          <p class="testi-text">"A Ellen transformou minha maquiagem de noiva em uma obra de arte. Profissional impecável!"</p>
         </div>
-        <div>
-          <div class="testi-author">Ana Paula M.</div>
-          <div class="testi-service">Maquiagem de Noiva</div>
-        </div>
+        <div><div class="testi-author">Ana Paula M.</div></div>
       </div>
-      
       <div class="testi-box reveal" style="transition-delay: 0.4s;">
         <div>
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"Ambiente perfeito e a profissional é extremamente cuidadosa. Fiz o Lash Lifting e simplesmente parei de usar rímel. O resultado superou todas as expectativas."</p>
+          <p class="testi-text">"Ambiente perfeito e a profissional é extremamente cuidadosa. O resultado superou todas as expectativas."</p>
         </div>
-        <div>
-          <div class="testi-author">Fernanda C.</div>
-          <div class="testi-service">Lash Lifting</div>
-        </div>
+        <div><div class="testi-author">Fernanda C.</div></div>
       </div>
     </div>
   </div>
@@ -409,20 +267,14 @@ footer {
     <div class="contact-info">
       <div class="section-eyebrow">Visite o Studio</div>
       <h2 class="section-title">Onde nos<br><em>encontrar</em></h2>
-      
       <div class="contact-details">
         <p><strong>Endereço:</strong><br>Rua Codó, 21, Loja 07<br>Bairro Filadélfia, Betim - MG</p>
         <p style="margin-top: 1rem;"><strong>WhatsApp:</strong><br>(31) 99581-2737</p>
       </div>
-
-      <a href="https://www.google.com/maps/dir//Ellen+Karine+Beauty+Studio+-+R.+Cod%C3%B3,+21+-+loja+07+-+Filad%C3%A9lfia,+Betim+-+MG,+32670-134/@-19.9678125,-44.2001562,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x0:0x21e95781b1cd2366!2m2!1d-44.2001562!2d-19.9678125" target="_blank" class="btn-primary btn-outline">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-        Traçar Rota no GPS
-      </a>
+      <a href="https://www.google.com/maps/dir//Ellen+Karine+Beauty+Studio+-+R.+Cod%C3%B3,+21+-+loja+07+-+Filad%C3%A9lfia,+Betim+-+MG,+32670-134/@-19.9678125,-44.2001562,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x0:0x21e95781b1cd2366!2m2!1d-44.2001562!2d-19.9678125" target="_blank" class="btn-primary btn-outline">Traçar Rota no GPS</a>
     </div>
-
     <div class="contact-map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.000000000000!2d-44.202345!3d-19.967812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x21e95781b1cd2366!2sEllen%20Karine%20Beauty%20Studio!5e0!3m2!1spt-BR!2sbr!4v1680000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.000000000000!2d-44.202345!3d-19.967812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x21e95781b1cd2366!2sEllen%20Karine%20Beauty%20Studio!5e0!3m2!1spt-BR!2sbr!4v1680000000000" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
 </section>
@@ -430,67 +282,36 @@ footer {
 <footer>
   <div class="footer-grid">
     <div class="footer-brand reveal">
-      <img src="logo_oficial.jpeg" alt="Logo Ellen Karine">
-      <p>Um espaço focado em elevar a sua autoestima através de técnicas avançadas e um atendimento de excelência.</p>
+      <img src="logo_oficial.jpeg" alt="Logo">
+      <p>Elevando a sua autoestima através de técnicas avançadas e atendimento de excelência.</p>
     </div>
-    
     <div class="footer-col reveal" style="transition-delay: 0.1s;">
       <h4>Navegação</h4>
-      <ul>
-        <li><a href="#home">Início</a></li>
-        <li><a href="#servicos">Especialidades</a></li>
-        <li><a href="#ambiente">O Studio</a></li>
-        <li><a href="#avaliacoes">Avaliações</a></li>
-      </ul>
+      <ul><li><a href="#home">Início</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#servicos">Serviços</a></li></ul>
     </div>
-
     <div class="footer-col reveal" style="transition-delay: 0.2s;">
-      <h4>Agendamento</h4>
-      <ul>
-        <li><a href="https://wa.me/5531995812737" target="_blank">WhatsApp</a></li>
-        <li><a href="#contato">Localização</a></li>
-      </ul>
+      <h4>Contato</h4>
+      <ul><li><a href="https://wa.me/5531995812737" target="_blank">WhatsApp</a></li><li><a href="#contato">Localização</a></li></ul>
     </div>
-
     <div class="footer-col reveal" style="transition-delay: 0.3s;">
-      <h4>Redes Sociais</h4>
-      <ul>
-        <li><a href="https://www.instagram.com/ellenkarinebeautystudio/" target="_blank">Instagram</a></li>
-      </ul>
+      <h4>Redes</h4>
+      <ul><li><a href="https://www.instagram.com/ellenkarinebeautystudio/" target="_blank">Instagram</a></li></ul>
     </div>
   </div>
-  
-  <div class="footer-bottom reveal" style="transition-delay: 0.4s;">
-    © 2026 Ellen Karine Beauty Studio. Todos os direitos reservados.
-  </div>
+  <div class="footer-bottom reveal">© 2026 Ellen Karine Beauty Studio.</div>
 </footer>
 
 <script>
-  // Efeito do Menu no Scroll
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  });
-
-  // Efeito de Revelar ao Rolar a Página
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); });
   const reveals = document.querySelectorAll('.reveal');
   const revealOnScroll = () => {
     const windowHeight = window.innerHeight;
-    const elementVisible = 100;
     reveals.forEach((reveal) => {
-      const elementTop = reveal.getBoundingClientRect().top;
-      if (elementTop < windowHeight - elementVisible) {
-        reveal.classList.add('active');
-      }
+      if (reveal.getBoundingClientRect().top < windowHeight - 100) reveal.classList.add('active');
     });
   };
-  window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll();
+  window.addEventListener('scroll', revealOnScroll); revealOnScroll();
 </script>
-
 </body>
 </html>
