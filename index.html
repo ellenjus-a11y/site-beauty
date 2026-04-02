@@ -19,7 +19,7 @@
   --text-muted: #737373;
   --black:      #000000;
   --gold:       #E4A853; 
-  --transition: all 0.6s cubic-bezier(0.25, 1, 0.25, 1);
+  --transition: all 0.5s cubic-bezier(0.25, 1, 0.25, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,7 +68,6 @@ nav.scrolled .nav-logo img { height: 48px; }
 }
 .nav-links a:hover::after { width: 100%; }
 
-/* Botão de Agendar no Menu */
 .nav-cta {
   background: var(--black); color: var(--bg-white) !important;
   padding: 0.8rem 1.8rem; border-radius: 2px; margin-left: 1rem;
@@ -93,13 +92,7 @@ nav.scrolled .nav-logo img { height: 48px; }
   font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 300; line-height: 1.05;
   color: var(--black); margin-bottom: 2.5rem;
 }
-
-/* AQUI ESTÁ O TOM MAIS FORTE DA HEADLINE */
-.hero-title em { 
-  font-style: italic; 
-  color: var(--text-dark); /* Mudou de text-muted (cinza claro) para text-dark (preto suave) */
-  font-weight: 400; /* Deixei a fonte levemente mais encorpada */
-}
+.hero-title em { font-style: italic; color: var(--text-dark); font-weight: 400; }
 
 .btn-primary {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 1.2rem 3rem;
@@ -124,23 +117,94 @@ section { padding: 8rem 6%; }
   font-weight: 300; color: var(--black); line-height: 1.2;
 }
 
-/* ── SERVIÇOS ───────────────────────────────── */
+/* ── SERVIÇOS (GUIA / TABS) ─────────────────── */
 #servicos { background-color: var(--bg-white); }
-.services-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
-}
-.svc-card {
-  background: var(--bg-nude); padding: 4rem 2.5rem;
-  transition: var(--transition); text-align: center;
+
+.tabs-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  background: var(--bg-nude);
+  padding: 4rem;
   border: 1px solid rgba(0,0,0,0.03);
+  max-width: 1100px;
+  margin: 0 auto;
 }
-.svc-card:hover { 
-  background: var(--bg-white); transform: translateY(-10px); 
-  box-shadow: 0 15px 35px rgba(0,0,0,0.06); 
+
+.tabs-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-right: 1px solid rgba(0,0,0,0.05);
+  padding-right: 2rem;
 }
-.svc-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--bg-alt); margin-bottom: 1rem; }
-.svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--black); }
-.svc-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
+
+.tab-btn {
+  background: transparent; border: none; text-align: left;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.8rem;
+  color: var(--text-muted); cursor: pointer;
+  transition: var(--transition); position: relative;
+  padding: 0.5rem 0;
+}
+
+.tab-btn:hover { color: var(--black); }
+
+.tab-btn.active {
+  color: var(--black); font-weight: 600; font-style: italic;
+}
+
+.tab-btn::after {
+  content: ''; position: absolute; right: -2rem; top: 0;
+  height: 100%; width: 3px; background: var(--black);
+  transform: scaleY(0); transition: var(--transition);
+}
+
+.tab-btn.active::after { transform: scaleY(1); }
+
+.tab-content { position: relative; }
+
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.6s ease;
+}
+
+.tab-panel.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-panel h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 3rem;
+  color: var(--black); margin-bottom: 1.5rem; font-weight: 300;
+}
+
+.tab-panel p {
+  font-size: 1.05rem; color: var(--text-muted); line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.tab-panel ul {
+  list-style: none; display: flex; flex-direction: column; gap: 1rem;
+}
+
+.tab-panel ul li {
+  font-size: 0.95rem; color: var(--black); letter-spacing: 0.05em;
+  display: flex; align-items: center; gap: 1rem;
+}
+
+.tab-panel ul li::before {
+  content: ''; width: 20px; height: 1px; background: var(--black); flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .tabs-container { grid-template-columns: 1fr; padding: 2.5rem; gap: 3rem; }
+  .tabs-sidebar { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); padding-right: 0; padding-bottom: 2rem; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .tab-btn::after { bottom: -2rem; right: 0; top: auto; height: 3px; width: 100%; transform: scaleX(0); }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-panel h3 { font-size: 2.5rem; text-align: center; }
+}
 
 /* ── NOSSO AMBIENTE ─────────────────────────── */
 #ambiente { background: var(--bg-alt); }
@@ -274,7 +338,6 @@ footer {
     <li><a href="#ambiente">O Studio</a></li>
     <li><a href="#avaliacoes">Avaliações</a></li>
     <li><a href="#contato">Contato</a></li>
-    
     <li>
       <a href="https://www.instagram.com/ellenkarinebeautystudio/" target="_blank" title="Siga no Instagram" style="padding: 0.5rem 0;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -284,7 +347,6 @@ footer {
         </svg>
       </a>
     </li>
-
     <li><a href="https://wa.me/5531995812737" target="_blank" class="nav-cta">Agendar Horário</a></li>
   </ul>
 </nav>
@@ -304,26 +366,74 @@ footer {
     <div class="section-eyebrow">Nosso Menu</div>
     <h2 class="section-title">Especialidades</h2>
   </div>
-  <div class="services-grid">
-    <div class="svc-card reveal">
-      <div class="svc-num">01</div>
-      <h3>Maquiagem</h3>
-      <p>Técnicas refinadas para noivas, formaturas e eventos, focadas em realçar seus traços naturais com alta durabilidade.</p>
+  
+  <div class="tabs-container reveal">
+    
+    <div class="tabs-sidebar">
+      <button class="tab-btn active" onclick="openTab(event, 'tab-maquiagem')">Maquiagem</button>
+      <button class="tab-btn" onclick="openTab(event, 'tab-cabelo')">Cabelos</button>
+      <button class="tab-btn" onclick="openTab(event, 'tab-brow')">Brow Lamination</button>
+      <button class="tab-btn" onclick="openTab(event, 'tab-lash')">Lash Lifting</button>
+      <button class="tab-btn" onclick="openTab(event, 'tab-unhas')">Nail Design</button>
     </div>
-    <div class="svc-card reveal" style="transition-delay: 0.2s;">
-      <div class="svc-num">02</div>
-      <h3>Design de Olhar</h3>
-      <p>Harmonização facial através de Brow Lamination e Lash Lifting. Fios perfeitamente alinhados, naturais e elegantes.</p>
-    </div>
-    <div class="svc-card reveal" style="transition-delay: 0.4s;">
-      <div class="svc-num">03</div>
-      <h3>Nail Design</h3>
-      <p>Alongamentos e blindagens com acabamento realista e alta resistência. Suas unhas impecáveis para a rotina ou grandes momentos.</p>
-    </div>
-    <div class="svc-card reveal" style="transition-delay: 0.6s;">
-      <div class="svc-num">04</div>
-      <h3>Cabelos</h3>
-      <p>Penteados exclusivos, tratamentos profundos e coloração para garantir que seus fios reflitam sua identidade com saúde e brilho.</p>
+
+    <div class="tab-content">
+      
+      <div id="tab-maquiagem" class="tab-panel active">
+        <h3>Maquiagem</h3>
+        <p>Arte e precisão em cada traço — do cotidiano ao grande evento, sempre valorizando sua identidade.</p>
+        <ul>
+          <li>Maquiagem Social</li>
+          <li>Noivas & Madrinhas</li>
+          <li>Artística & Editorial</li>
+          <li>Festas & Formaturas</li>
+        </ul>
+      </div>
+
+      <div id="tab-cabelo" class="tab-panel">
+        <h3>Cabelos</h3>
+        <p>Tratamentos e serviços capilares com os melhores produtos para transformar e cuidar dos seus fios.</p>
+        <ul>
+          <li>Corte & Finalização</li>
+          <li>Coloração & Mechas</li>
+          <li>Tratamentos & Nutrição</li>
+          <li>Escova Progressiva</li>
+        </ul>
+      </div>
+
+      <div id="tab-brow" class="tab-panel">
+        <h3>Brow Lamination</h3>
+        <p>Técnica que redefine e disciplina as sobrancelhas com resultado impecável e natural de longa duração.</p>
+        <ul>
+          <li>Laminação de Sobrancelhas</li>
+          <li>Design & Mapeamento</li>
+          <li>Henna de Sobrancelhas</li>
+          <li>Micropigmentação</li>
+        </ul>
+      </div>
+
+      <div id="tab-lash" class="tab-panel">
+        <h3>Lash Lifting</h3>
+        <p>Permanente de cílios com curvatura natural. Olhar marcante por até 8 semanas, sem necessidade de extensão.</p>
+        <ul>
+          <li>Lash Lifting & Tinting</li>
+          <li>Extensão de Cílios</li>
+          <li>Volume Russo</li>
+          <li>Baby Lash & Fio a Fio</li>
+        </ul>
+      </div>
+
+      <div id="tab-unhas" class="tab-panel">
+        <h3>Nail Design</h3>
+        <p>Nail design que une estética, saúde e tendências para mãos que falam por você em qualquer ocasião.</p>
+        <ul>
+          <li>Manicure & Pedicure</li>
+          <li>Gel & Acrigel</li>
+          <li>Unhas em Fibra</li>
+          <li>Nail Art Personalizada</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
@@ -352,7 +462,6 @@ footer {
   <div class="reviews-container">
     <div class="google-card reveal">
       <img src="img_fachada.jpeg" alt="Fachada do Studio no Google" class="google-card-img">
-      
       <svg class="google-logo" viewBox="0 0 90 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M11.8 14.1V18h6.5C18 20.3 15.6 23.6 11.8 23.6c-4.4 0-8.1-3.6-8.1-8.1s3.7-8.1 8.1-8.1c2 0 3.8.7 5.2 2l3-3C17.9 4.3 15.1 3 11.8 3 5.3 3 0 8.3 0 14.8s5.3 11.8 11.8 11.8c6.8 0 11.3-4.8 11.3-11.5 0-.8-.1-1.5-.2-2.2H11.8z" fill="#4285F4"/>
         <path d="M32.8 9.5c-4 0-7.3 3.1-7.3 7.3 0 4.1 3.3 7.3 7.3 7.3 4 0 7.3-3.2 7.3-7.3 0-4.1-3.2-7.3-7.3-7.3zm0 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.3 0 4.2 1.9 4.2 4.4 0 2.5-1.9 4.4-4.2 4.4z" fill="#EA4335"/>
@@ -400,4 +509,102 @@ footer {
       
       <div class="contact-details">
         <p><strong>Endereço:</strong><br>Rua Codó, 21, Loja 07<br>Bairro Filadélfia, Betim - MG</p>
-        <p style="margin-top: 1rem;"><strong>WhatsApp:</strong><br>(31) 99581-2737
+        <p style="margin-top: 1rem;"><strong>WhatsApp:</strong><br>(31) 99581-2737</p>
+      </div>
+
+      <a href="https://www.google.com/maps/dir//Ellen+Karine+Beauty+Studio+-+R.+Cod%C3%B3,+21+-+loja+07+-+Filad%C3%A9lfia,+Betim+-+MG,+32670-134/@-19.9678125,-44.2001562,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x0:0x21e95781b1cd2366!2m2!1d-44.2001562!2d-19.9678125" target="_blank" class="btn-primary btn-outline">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Traçar Rota no GPS
+      </a>
+    </div>
+
+    <div class="contact-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.000000000000!2d-44.202345!3d-19.967812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x21e95781b1cd2366!2sEllen%20Karine%20Beauty%20Studio!5e0!3m2!1spt-BR!2sbr!4v1680000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand reveal">
+      <img src="logo_oficial.jpeg" alt="Logo Ellen Karine">
+      <p>Um espaço focado em elevar a sua autoestima através de técnicas avançadas e um atendimento de excelência.</p>
+    </div>
+    
+    <div class="footer-col reveal" style="transition-delay: 0.1s;">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#servicos">Especialidades</a></li>
+        <li><a href="#ambiente">O Studio</a></li>
+        <li><a href="#avaliacoes">Avaliações</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col reveal" style="transition-delay: 0.2s;">
+      <h4>Agendamento</h4>
+      <ul>
+        <li><a href="https://wa.me/5531995812737" target="_blank">WhatsApp</a></li>
+        <li><a href="#contato">Localização</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col reveal" style="transition-delay: 0.3s;">
+      <h4>Redes Sociais</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/ellenkarinebeautystudio/" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom reveal" style="transition-delay: 0.4s;">
+    © 2026 Ellen Karine Beauty Studio. Todos os direitos reservados.
+  </div>
+</footer>
+
+<script>
+  // Função para as Abas de Serviços funcionarem
+  function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tab-panel");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+      tabcontent[i].classList.remove("active");
+    }
+    tablinks = document.getElementsByClassName("tab-btn");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.className += " active";
+  }
+
+  // Efeito do Menu no Scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Efeito de Revelar ao Rolar a Página
+  const reveals = document.querySelectorAll('.reveal');
+  const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    const elementVisible = 100;
+    reveals.forEach((reveal) => {
+      const elementTop = reveal.getBoundingClientRect().top;
+      if (elementTop < windowHeight - elementVisible) {
+        reveal.classList.add('active');
+      }
+    });
+  };
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
+</script>
+
+</body>
+</html>
