@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maquiagem | Ellen Karine</title>
+<link rel="icon" type="image/jpeg" href="favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+:root { --bg-nude: #FBF9F6; --bg-white: #FFFFFF; --bg-alt: #F2EBE1; --text-dark: #1A1A1A; --text-muted: #737373; --black: #000000; --gold: #E4A853; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito Sans', sans-serif; background-color: var(--bg-nude); color: var(--text-dark); }
+nav { padding: 1.5rem 6%; display: flex; align-items: center; justify-content: space-between; background: rgba(255, 255, 255, 0.95); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+.nav-logo img { height: 48px; mix-blend-mode: multiply; }
+.btn-voltar { text-decoration: none; font-size: 0.8rem; color: var(--black); text-transform: uppercase; font-weight: 600; letter-spacing: 0.1em; }
+
+.service-hero { padding: 12rem 6% 6rem 6%; text-align: center; }
+.service-title { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; margin-bottom: 1rem; color: var(--black); }
+.service-subtitle { font-size: 1rem; color: var(--text-muted); letter-spacing: 0.2em; text-transform: uppercase; }
+
+.content-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding: 0 6% 8rem 6%; max-width: 1200px; margin: 0 auto; align-items: center;}
+.content-img { width: 100%; height: 600px; object-fit: cover; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+.content-text p { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 2rem; }
+.content-text ul { list-style: none; margin-bottom: 3rem; }
+.content-text ul li { font-size: 1rem; color: var(--black); margin-bottom: 1rem; padding-left: 2rem; position: relative; }
+.content-text ul li::before { content: '•'; position: absolute; left: 0; color: var(--gold); font-size: 1.5rem; line-height: 1; }
+
+.btn-primary { display: inline-block; padding: 1rem 2.5rem; background: var(--black); color: var(--bg-white); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.1em; }
+@media (max-width: 900px) { .content-container { grid-template-columns: 1fr; text-align: center; } .content-text ul li { padding-left: 0; } .content-text ul li::before { display: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo_oficial.jpeg" alt="Logo"></a>
+  <a href="index.html" class="btn-voltar">&larr; Voltar ao Início</a>
+</nav>
+
+<section class="service-hero">
+  <div class="service-subtitle">Especialidade</div>
+  <h1 class="service-title">Maquiagem</h1>
+</section>
+
+<div class="content-container">
+  <div>
+    <img src="img_espelhos.jpeg" alt="Maquiagem Profissional" class="content-img">
+  </div>
+  <div class="content-text">
+    <p>A maquiagem é uma poderosa ferramenta de expressão. No Ellen Karine Beauty Studio, cada produção é pensada para harmonizar com a sua identidade, o seu tom de pele e o formato do seu rosto.</p>
+    <p>Trabalhamos com produtos de alta durabilidade e marcas premium, garantindo que você permaneça impecável do início ao fim do seu evento.</p>
+    
+    <ul>
+      <li>Maquiagem Social para Eventos</li>
+      <li>Produção Completa para Noivas</li>
+      <li>Madrinhas e Formandas</li>
+      <li>Maquiagem Artística e Editorial</li>
+    </ul>
+
+    <a href="https://wa.me/5531995812737" class="btn-primary" target="_blank">Agendar minha Maquiagem</a>
+  </div>
+</div>
+
+</body>
+</html>
