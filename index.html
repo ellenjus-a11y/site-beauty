@@ -18,12 +18,12 @@
   --text-dark:  #1A1A1A;
   --text-muted: #737373;
   --black:      #080808;
-  --gold:       #C4A46B; /* Dourado sofisticado */
+  --gold:       #C4A46B; 
   --transition: all 0.6s cubic-bezier(0.25, 1, 0.25, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; cursor: none; /* Esconde cursor original */ }
+html { scroll-behavior: smooth; font-size: 16px; cursor: none; }
 body { font-family: 'Nunito Sans', sans-serif; background-color: var(--bg-nude); color: var(--text-dark); overflow-x: hidden; }
 
 /* ── CURSOR PERSONALIZADO ───────────── */
@@ -48,14 +48,12 @@ nav.scrolled .nav-logo img { height: 50px; }
 .nav-links a:hover { color: var(--gold); }
 .nav-links a:hover::after { width: 100%; }
 
-/* Botão do Menu */
 .nav-cta { background: var(--black); color: var(--bg-white) !important; padding: 0.8rem 1.8rem; border-radius: 1px; margin-left: 1rem; border: 1px solid var(--black); }
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { background: var(--gold); border-color: var(--gold); color: var(--white) !important; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(196, 164, 107, 0.2); }
 
-/* ── HERO (INÍCIO) ───────────────────────────── */
+/* ── HERO ───────────────────────────── */
 .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 5%; background: radial-gradient(circle at center, var(--bg-white) 0%, var(--bg-nude) 100%); overflow: hidden; }
-/* Linhas de charme no fundo */
 .hero::before { content: ''; position: absolute; width: 1px; height: 100vh; background: linear-gradient(transparent, rgba(196, 164, 107, 0.2), transparent); left: 20%; animation: drift 10s infinite linear; }
 .hero::after { content: ''; position: absolute; width: 1px; height: 100vh; background: linear-gradient(transparent, rgba(196, 164, 107, 0.2), transparent); right: 20%; animation: drift 15s infinite linear reverse; }
 @keyframes drift { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
@@ -97,11 +95,10 @@ section { padding: 9rem 6%; position: relative; }
 .svc-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: rgba(196, 164, 107, 0.2); margin-bottom: 1rem; transition: var(--transition); line-height: 1; }
 .svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1rem; color: var(--black); transition: color 0.3s; }
 .svc-link-text { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-top: 2rem; display: inline-flex; align-items: center; gap: 5px; transition: var(--transition); }
-.svc-card:hover .svc-num { color: var(--gold); }
-.svc-card:hover h3 { color: var(--gold); }
+.svc-card:hover .svc-num, .svc-card:hover h3 { color: var(--gold); }
 .svc-card:hover .svc-link-text { color: var(--gold); gap: 10px; }
 
-/* ── MODAIS DOS SERVIÇOS ── */
+/* ── MODAIS DOS SERVIÇOS (AS ABAS) E SLIDER ── */
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-nude); z-index: 2000; transform: translateY(100%); transition: transform 0.8s cubic-bezier(0.8, 0, 0.2, 1); overflow-y: auto; opacity: 0; visibility: hidden; }
 .modal-overlay.active { transform: translateY(0); opacity: 1; visibility: visible; }
 .modal-nav { padding: 1.5rem 6%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 20px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 10; }
@@ -109,7 +106,12 @@ section { padding: 9rem 6%; position: relative; }
 .btn-fechar:hover { color: var(--gold); transform: translateX(-5px); }
 .modal-content-wrapper { padding: 6rem 6% 8rem 6%; }
 .servico-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1200px; margin: 0 auto; align-items: center; }
-.servico-img { width: 100%; height: 65vh; min-height: 450px; object-fit: cover; object-position: center top; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+/* NOVO: Slider de Imagens */
+.slider-container { width: 100%; height: 65vh; min-height: 450px; position: relative; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); overflow: hidden; }
+.slide { width: 100%; height: 100%; object-fit: cover; object-position: center top; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
+.slide.active { opacity: 1; }
+
 .servico-texto p { font-size: 1.15rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 2rem; font-weight: 300; }
 .servico-texto ul { list-style: none; margin-bottom: 3rem; }
 .servico-texto ul li { font-size: 1.1rem; color: var(--black); margin-bottom: 1.2rem; padding-left: 2rem; position: relative; font-weight: 400; }
@@ -158,7 +160,7 @@ section { padding: 9rem 6%; position: relative; }
 .contact-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(100%) contrast(1.1) opacity(0.8); transition: filter 0.8s ease; }
 .contact-map:hover iframe { filter: grayscale(0%) contrast(1) opacity(1); }
 
-/* ── RODAPÉ ────────────────────── */
+/* ── RODAPÉ PRETO LUXO ────────────────────── */
 footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nude); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto 4rem auto; }
 .footer-brand img { height: 65px; margin-bottom: 2rem; filter: brightness(0) invert(1) opacity(0.9); }
@@ -172,12 +174,13 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
 
 /* ── RESPONSIVO ─────────────────────────────── */
 @media (max-width: 900px) {
-  .sobre-container, .reviews-container, .testimonials-grid, .contact-container { grid-template-columns: 1fr; text-align: center; }
+  .sobre-container, .reviews-container, .testimonials-grid, .contact-container, .servico-container { grid-template-columns: 1fr; text-align: center; }
   .sobre-img-wrapper { padding: 0; } .sobre-img-wrapper::before { display: none; }
   .contact-info .section-title { text-align: center; }
   .gallery-item { grid-column: span 12 !important; height: 40vh !important; }
   .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
   .footer-brand p { margin: 0 auto; }
+  .servico-texto ul li { padding-left: 0; } .servico-texto ul li::before { display: none; }
 }
 @media (max-width: 768px) { .nav-links { display: none; } .hero-title { font-size: 4rem; } }
 </style>
@@ -222,7 +225,7 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
       <div class="section-eyebrow">A Nossa Essência</div>
       <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Sobre o <em>Studio</em></h2>
       <p>No Ellen Karine Beauty Studio, acreditamos que a beleza vai muito além da estética. Trata-se de acolhimento, cuidado e da forma incrível como se sente ao olhar-se no espelho.</p>
-      <p>O nosso espaço foi cuidadosamente planejado em Betim para oferecer uma experiência de luxo, calma e transformação. Com uma equipa de excelência e curadoria de produtos premium, garantimos que cada momento aqui seja dedicado exclusivamente a si.</p>
+      <p>O nosso espaço foi cuidadosamente planejado em Betim para oferecer uma experiência de luxo, calma e transformação. Com uma equipe de excelência e curadoria de produtos premium, garantimos que cada momento aqui seja dedicado exclusivamente a você.</p>
     </div>
   </div>
 </section>
@@ -359,7 +362,13 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
       <h1 class="section-title">Maquiagem</h1>
     </div>
     <div class="servico-container">
-      <div><img src="img_espelhos.jpeg" alt="Maquiagem" class="servico-img"></div>
+      
+      <div class="slider-container">
+        <img src="maquiagem1.jpg" alt="Maquiagem" class="slide active">
+        <img src="maquiagem2.jpg" alt="Maquiagem" class="slide">
+        <img src="maquiagem3.jpg" alt="Maquiagem" class="slide">
+      </div>
+
       <div class="servico-texto">
         <p>A maquiagem é uma poderosa ferramenta de expressão. No nosso estúdio, cada produção é pensada para harmonizar com a sua identidade, o seu tom de pele e o formato do seu rosto.</p>
         <p>Trabalhamos exclusivamente com produtos de alta durabilidade e marcas de luxo, garantindo que permaneça impecável do início ao fim do seu evento.</p>
@@ -386,7 +395,13 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
       <h1 class="section-title">Cabelo</h1>
     </div>
     <div class="servico-container">
-      <div><img src="img_estacoes.jpeg" alt="Cabelo" class="servico-img"></div>
+      
+      <div class="slider-container">
+        <img src="cabelo1.jpg" alt="Cabelo" class="slide active">
+        <img src="cabelo2.jpg" alt="Cabelo" class="slide">
+        <img src="cabelo3.jpg" alt="Cabelo" class="slide">
+      </div>
+
       <div class="servico-texto">
         <p>Cuidamos da saúde e da estética dos seus fios com os melhores produtos do mercado. O nosso objetivo é fazer com que o seu cabelo reflita a sua personalidade com brilho e vitalidade.</p>
         <p>Seja para uma mudança radical com coloração ou um tratamento profundo para recuperar a estrutura capilar, a nossa equipa de especialistas está à sua disposição.</p>
@@ -412,7 +427,13 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
       <h1 class="section-title">Cílios & Sobrancelha</h1>
     </div>
     <div class="servico-container">
-      <div><img src="img_cadeiras.jpeg" alt="Cílios" class="servico-img"></div>
+      
+      <div class="slider-container">
+        <img src="cilios1.jpg" alt="Cílios" class="slide active">
+        <img src="cilios2.jpg" alt="Cílios" class="slide">
+        <img src="cilios3.jpg" alt="Cílios" class="slide">
+      </div>
+
       <div class="servico-texto">
         <p>O design perfeito para o seu olhar. Harmonizamos o seu rosto com técnicas de visagismo que trazem naturalidade, volume e uma expressão marcante.</p>
         <p>Os nossos procedimentos de Lash Lifting e Brow Lamination são ideais para quem procura praticidade sem abrir mão do requinte, mantendo os fios alinhados.</p>
@@ -438,7 +459,13 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
       <h1 class="section-title">Nail Design</h1>
     </div>
     <div class="servico-container">
-      <div><img src="img_interno.jpeg" alt="Unhas" class="servico-img"></div>
+      
+      <div class="slider-container">
+        <img src="unhas1.jpg" alt="Unhas" class="slide active">
+        <img src="unhas2.jpg" alt="Unhas" class="slide">
+        <img src="unhas3.jpg" alt="Unhas" class="slide">
+      </div>
+
       <div class="servico-texto">
         <p>Alongamentos com durabilidade superior e esmaltação impecável. As suas mãos merecem um cuidado premium que se reflete em cada detalhe.</p>
         <p>Trabalhamos com materiais antialérgicos rigorosamente selecionados e técnicas modernas para garantir não apenas a estética, mas a saúde da sua unha natural.</p>
@@ -464,7 +491,13 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
       <h1 class="section-title">Spa dos Pés</h1>
     </div>
     <div class="servico-container">
-      <div><img src="img_amplo.jpeg" alt="Spa" class="servico-img"></div>
+      
+      <div class="slider-container">
+        <img src="spa1.jpg" alt="Spa dos Pés" class="slide active">
+        <img src="spa2.jpg" alt="Spa dos Pés" class="slide">
+        <img src="spa3.jpg" alt="Spa dos Pés" class="slide">
+      </div>
+
       <div class="servico-texto">
         <p>Um momento de relaxamento profundo e renovação. Tratamos a saúde e beleza dos seus pés com hidratação intensiva e técnicas apuradas de esfoliação.</p>
         <p>Ideal para aliviar a tensão do dia a dia e manter a pele com toque de seda, nutrida e visivelmente descansada.</p>
@@ -521,6 +554,23 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
     document.getElementById(idModal).classList.remove('active');
     document.body.style.overflow = 'auto'; 
   }
+
+  // LÓGICA DO SLIDER (Fade Automático)
+  function startSliders() {
+    const sliders = document.querySelectorAll('.slider-container');
+    sliders.forEach(slider => {
+      let slides = slider.querySelectorAll('.slide');
+      let current = 0;
+      if(slides.length > 1) {
+        setInterval(() => {
+          slides[current].classList.remove('active');
+          current = (current + 1) % slides.length;
+          slides[current].classList.add('active');
+        }, 4000); // Troca a foto a cada 4 segundos
+      }
+    });
+  }
+  document.addEventListener("DOMContentLoaded", startSliders);
 </script>
 </body>
 </html>
