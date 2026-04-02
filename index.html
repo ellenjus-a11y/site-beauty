@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,102 +10,117 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
 <style>
-/* ── VARIÁVEIS ───────────────── */
+/* ── VARIÁVEIS DE LUXO ───────────────── */
 :root {
   --bg-nude:    #FBF9F6;
   --bg-white:   #FFFFFF;
   --bg-alt:     #F2EBE1;
   --text-dark:  #1A1A1A;
   --text-muted: #737373;
-  --black:      #000000;
-  --gold:       #E4A853; 
-  --transition: all 0.5s cubic-bezier(0.25, 1, 0.25, 1);
+  --black:      #080808;
+  --gold:       #C4A46B; /* Dourado sofisticado */
+  --transition: all 0.6s cubic-bezier(0.25, 1, 0.25, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; cursor: none; /* Esconde cursor original */ }
 body { font-family: 'Nunito Sans', sans-serif; background-color: var(--bg-nude); color: var(--text-dark); overflow-x: hidden; }
 
+/* ── CURSOR PERSONALIZADO ───────────── */
+.cursor-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s; }
+.cursor-ring { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(196, 164, 107, 0.5); position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, border-color 0.3s; }
+body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
+
 /* ── ANIMAÇÕES ───────────── */
-.reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
+.reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.25, 1, 0.25, 1); }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
 /* ── NAVEGAÇÃO ──────────────────────────────── */
 nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1.5rem 6%; display: flex; align-items: center; justify-content: space-between; transition: var(--transition); background-color: transparent; }
-nav.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 0.8rem 6%; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+nav.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 0.8rem 6%; box-shadow: 0 4px 30px rgba(0,0,0,0.04); border-bottom: 1px solid rgba(196, 164, 107, 0.1); }
 .nav-logo { display: flex; align-items: center; justify-content: center; mix-blend-mode: multiply; }
-.nav-logo img { height: 60px; width: auto; object-fit: contain; transition: var(--transition); }
-nav.scrolled .nav-logo img { height: 48px; }
+.nav-logo img { height: 65px; width: auto; object-fit: contain; transition: var(--transition); }
+nav.scrolled .nav-logo img { height: 50px; }
 
 .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
-.nav-links a { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dark); text-decoration: none; position: relative; font-weight: 600; display: flex; align-items: center; }
-.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--black); transition: var(--transition); }
+.nav-links a { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dark); text-decoration: none; position: relative; font-weight: 600; display: flex; align-items: center; transition: color 0.3s; }
+.nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 1px; background: var(--gold); transition: var(--transition); }
+.nav-links a:hover { color: var(--gold); }
 .nav-links a:hover::after { width: 100%; }
-.nav-cta { background: var(--black); color: var(--bg-white) !important; padding: 0.8rem 1.8rem; border-radius: 2px; margin-left: 1rem; }
-.nav-cta::after { display: none !important; }
-.nav-cta:hover { background: var(--text-muted); color: var(--bg-white) !important; transform: translateY(-2px); }
 
-/* ── HERO ───────────────────────────── */
-.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 5%; background: radial-gradient(circle at top, var(--bg-white) 0%, var(--bg-nude) 100%); }
-.hero-subtitle { font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; font-weight: 600; }
-.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 300; line-height: 1.05; color: var(--black); margin-bottom: 2.5rem; }
-.hero-title em { font-style: italic; color: var(--text-dark); font-weight: 400; }
-.btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 1.2rem 3rem; background: var(--black); color: var(--bg-white); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600; transition: var(--transition); border: 1px solid var(--black); cursor: pointer; }
-.btn-primary:hover { background: transparent; color: var(--black); transform: translateY(-3px); }
-.btn-outline { background: transparent; color: var(--black); }
-.btn-outline:hover { background: var(--black); color: var(--bg-white); }
+/* Botão do Menu */
+.nav-cta { background: var(--black); color: var(--bg-white) !important; padding: 0.8rem 1.8rem; border-radius: 1px; margin-left: 1rem; border: 1px solid var(--black); }
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--gold); border-color: var(--gold); color: var(--white) !important; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(196, 164, 107, 0.2); }
+
+/* ── HERO (INÍCIO) ───────────────────────────── */
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 5%; background: radial-gradient(circle at center, var(--bg-white) 0%, var(--bg-nude) 100%); overflow: hidden; }
+/* Linhas de charme no fundo */
+.hero::before { content: ''; position: absolute; width: 1px; height: 100vh; background: linear-gradient(transparent, rgba(196, 164, 107, 0.2), transparent); left: 20%; animation: drift 10s infinite linear; }
+.hero::after { content: ''; position: absolute; width: 1px; height: 100vh; background: linear-gradient(transparent, rgba(196, 164, 107, 0.2), transparent); right: 20%; animation: drift 15s infinite linear reverse; }
+@keyframes drift { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+
+.hero-subtitle { font-size: 0.75rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; font-weight: 600; display: flex; align-items: center; gap: 15px; }
+.hero-subtitle::before, .hero-subtitle::after { content: ''; width: 40px; height: 1px; background: var(--gold); }
+
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.8rem, 9vw, 8rem); font-weight: 300; line-height: 1.05; color: var(--black); margin-bottom: 2.5rem; letter-spacing: -1px; }
+.hero-title em { font-style: italic; color: var(--gold); font-weight: 400; position: relative; display: inline-block; }
+
+.btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 1.2rem 3rem; background: var(--black); color: var(--bg-white); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600; transition: var(--transition); border: 1px solid var(--black); position: relative; overflow: hidden; z-index: 1; }
+.btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--gold); transition: var(--transition); z-index: -1; }
+.btn-primary:hover::before { left: 0; }
+.btn-primary:hover { border-color: var(--gold); color: var(--white); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(196, 164, 107, 0.3); }
 
 /* ── SEÇÕES GERAIS ──────────────────────────── */
-section { padding: 8rem 6%; }
-.section-header { text-align: center; margin-bottom: 4rem; }
-.section-eyebrow { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; font-weight: 600; }
-.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; color: var(--black); line-height: 1.2; }
+section { padding: 9rem 6%; position: relative; }
+.section-header { text-align: center; margin-bottom: 5rem; }
+.section-eyebrow { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 600; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 300; color: var(--black); line-height: 1.1; }
+.section-title em { color: var(--gold); font-style: italic; }
 
 /* ── SOBRE O SALÃO ──────────────────────────── */
-#sobre { background-color: var(--bg-white); }
-.sobre-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
-.sobre-img { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-.sobre-text p { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem; }
+#sobre { background-color: var(--bg-white); border-bottom: 1px solid rgba(196, 164, 107, 0.1); }
+.sobre-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+.sobre-img-wrapper { position: relative; padding: 2rem 0 0 2rem; }
+.sobre-img-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 80%; height: 80%; border: 1px solid var(--gold); z-index: 0; }
+.sobre-img { width: 100%; height: 550px; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.08); position: relative; z-index: 1; transition: var(--transition); }
+.sobre-img-wrapper:hover .sobre-img { transform: translate(-10px, -10px); }
+.sobre-text p { font-size: 1.15rem; line-height: 1.9; color: var(--text-muted); margin-bottom: 1.5rem; font-weight: 300; }
 
 /* ── SERVIÇOS ───────────────────────────────── */
 #servicos { background-color: var(--bg-nude); }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-.svc-card { background: var(--bg-white); padding: 3rem 2rem; transition: var(--transition); text-align: center; border: 1px solid rgba(0,0,0,0.03); cursor: pointer; }
-.svc-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.06); border-color: var(--gold); }
-.svc-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--bg-alt); margin-bottom: 1rem; transition: var(--transition); }
-.svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--black); }
-.svc-link-text { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); font-weight: 600; margin-top: 1.5rem; display: inline-block; }
-.svc-card:hover .svc-num, .svc-card:hover .svc-link-text { color: var(--gold); }
+.svc-card { background: var(--bg-white); padding: 4rem 2.5rem; transition: var(--transition); text-align: center; border: 1px solid rgba(0,0,0,0.03); cursor: none; position: relative; overflow: hidden; }
+.svc-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--gold); transition: var(--transition); }
+.svc-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+.svc-card:hover::before { width: 100%; }
+.svc-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: rgba(196, 164, 107, 0.2); margin-bottom: 1rem; transition: var(--transition); line-height: 1; }
+.svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 1rem; color: var(--black); transition: color 0.3s; }
+.svc-link-text { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-top: 2rem; display: inline-flex; align-items: center; gap: 5px; transition: var(--transition); }
+.svc-card:hover .svc-num { color: var(--gold); }
+.svc-card:hover h3 { color: var(--gold); }
+.svc-card:hover .svc-link-text { color: var(--gold); gap: 10px; }
 
-/* ── MODAIS DOS SERVIÇOS (As "novas abas" num só código) ── */
-.modal-overlay {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-  background: var(--bg-nude); z-index: 2000;
-  transform: translateY(100%); transition: transform 0.6s cubic-bezier(0.25, 1, 0.25, 1);
-  overflow-y: auto; opacity: 0; visibility: hidden;
-}
+/* ── MODAIS DOS SERVIÇOS ── */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-nude); z-index: 2000; transform: translateY(100%); transition: transform 0.8s cubic-bezier(0.8, 0, 0.2, 1); overflow-y: auto; opacity: 0; visibility: hidden; }
 .modal-overlay.active { transform: translateY(0); opacity: 1; visibility: visible; }
-.modal-nav { padding: 1.5rem 6%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 10; }
-.btn-fechar { background: none; border: none; font-size: 0.85rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.1em; cursor: pointer; color: var(--black); display: flex; align-items: center; gap: 8px; }
-.btn-fechar:hover { color: var(--gold); }
-
+.modal-nav { padding: 1.5rem 6%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 20px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 10; }
+.btn-fechar { background: none; border: none; font-size: 0.85rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.1em; color: var(--black); display: flex; align-items: center; gap: 8px; transition: 0.3s; cursor: none; }
+.btn-fechar:hover { color: var(--gold); transform: translateX(-5px); }
 .modal-content-wrapper { padding: 6rem 6% 8rem 6%; }
-.servico-header { text-align: center; margin-bottom: 4rem; }
 .servico-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1200px; margin: 0 auto; align-items: center; }
-.servico-img { width: 100%; height: 65vh; min-height: 450px; object-fit: cover; object-position: center top; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-.servico-texto p { font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 2rem; }
+.servico-img { width: 100%; height: 65vh; min-height: 450px; object-fit: cover; object-position: center top; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+.servico-texto p { font-size: 1.15rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 2rem; font-weight: 300; }
 .servico-texto ul { list-style: none; margin-bottom: 3rem; }
-.servico-texto ul li { font-size: 1.05rem; color: var(--black); margin-bottom: 1.2rem; padding-left: 2rem; position: relative; font-weight: 600; }
+.servico-texto ul li { font-size: 1.1rem; color: var(--black); margin-bottom: 1.2rem; padding-left: 2rem; position: relative; font-weight: 400; }
 .servico-texto ul li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 1.2rem; line-height: 1; top: 2px;}
 
-@media (max-width: 900px) { .servico-container { grid-template-columns: 1fr; text-align: center; } .servico-texto ul li { padding-left: 0; } .servico-texto ul li::before { display: none; } }
-
 /* ── NOSSO AMBIENTE ─────────────────────────── */
-#ambiente { background: var(--bg-white); }
+#ambiente { background: var(--bg-white); border-top: 1px solid rgba(196, 164, 107, 0.1); }
 .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
-.gallery-item { position: relative; overflow: hidden; }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1); }
-.gallery-item:hover img { transform: scale(1.05); }
+.gallery-item { position: relative; overflow: hidden; cursor: none; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(40%) contrast(1.1); transition: transform 1.5s cubic-bezier(0.2, 1, 0.3, 1), filter 0.8s ease; }
+.gallery-item:hover img { transform: scale(1.08); filter: grayscale(0%) contrast(1); }
 .img-1 { grid-column: span 12; height: 60vh; }
 .img-2 { grid-column: span 6; height: 50vh; }
 .img-3 { grid-column: span 6; height: 50vh; }
@@ -114,65 +129,73 @@ section { padding: 8rem 6%; }
 .img-6 { grid-column: span 4; height: 40vh; }
 
 /* ── AVALIAÇÕES ────────────────── */
-#avaliacoes { background-color: var(--bg-nude); }
+#avaliacoes { background-color: var(--bg-nude); border-top: 1px solid rgba(196, 164, 107, 0.1); }
 .reviews-container { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: stretch; }
-.google-card { background: var(--bg-white); padding: 2.5rem; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; text-align: center; align-items: center; }
-.google-card-img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 2rem; }
-.google-logo { width: 90px; margin-bottom: 1rem; }
-.google-rating { font-family: 'Cormorant Garamond', serif; font-size: 4rem; line-height: 1; color: var(--black); margin-bottom: 0.5rem; }
-.google-stars { color: var(--gold); font-size: 1.5rem; margin-bottom: 1.5rem; letter-spacing: 2px; }
-.google-btn { display: inline-block; padding: 0.8rem 2rem; border: 1px solid var(--black); color: var(--black); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; transition: var(--transition); }
-.google-btn:hover { background: var(--black); color: var(--bg-white); }
+.google-card { background: var(--bg-white); padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column; text-align: center; align-items: center; transition: var(--transition); }
+.google-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(196, 164, 107, 0.1); }
+.google-card-img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 2rem; }
+.google-logo { width: 90px; margin-bottom: 1.5rem; }
+.google-rating { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; line-height: 1; color: var(--black); margin-bottom: 0.5rem; }
+.google-stars { color: var(--gold); font-size: 1.5rem; margin-bottom: 2rem; letter-spacing: 3px; }
+.google-btn { display: inline-block; padding: 1rem 2.5rem; border: 1px solid var(--black); color: var(--black); text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; transition: var(--transition); cursor: none; }
+.google-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--white); }
 .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-.testi-box { background: var(--bg-white); padding: 2.5rem; border: 1px solid rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
-.testi-stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 1rem; }
-.testi-text { font-style: italic; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.95rem; }
-.testi-author { font-weight: 600; font-size: 0.85rem; color: var(--black); text-transform: uppercase; letter-spacing: 0.1em; }
+.testi-box { background: var(--bg-white); padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); }
+.testi-box:hover { box-shadow: 0 15px 40px rgba(196, 164, 107, 0.1); }
+.testi-stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 1.5rem; }
+.testi-text { font-style: italic; color: var(--text-muted); line-height: 1.9; margin-bottom: 2.5rem; font-size: 1.05rem; }
+.testi-author { font-weight: 600; font-size: 0.85rem; color: var(--black); text-transform: uppercase; letter-spacing: 0.15em; }
 
 /* ── CONTATO E MAPA ─────────────────────────── */
 #contato { background-color: var(--bg-white); padding: 8rem 6% 0 6%; }
-.contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; padding-bottom: 8rem; }
-.contact-info .section-title { font-size: 3rem; margin-bottom: 1.5rem; text-align: left; }
-.contact-details { margin-bottom: 2.5rem; }
-.contact-details p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.6; }
-.contact-details strong { color: var(--black); font-weight: 600; }
-.contact-map { width: 100%; height: 450px; background: var(--bg-alt); border-radius: 4px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-.contact-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(80%) contrast(1.1) opacity(0.9); transition: filter 0.5s ease; }
-.contact-map iframe:hover { filter: grayscale(0%) contrast(1) opacity(1); }
-
-/* ── RESPONSIVO GERAL ─────────────────────────────── */
-@media (max-width: 900px) {
-  .sobre-container, .reviews-container, .testimonials-grid, .contact-container { grid-template-columns: 1fr; text-align: center; }
-  .contact-info .section-title { text-align: center; }
-  .gallery-item { grid-column: span 12 !important; height: 40vh !important; }
-}
-@media (max-width: 768px) { .nav-links { display: none; } }
+.contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1200px; margin: 0 auto; padding-bottom: 8rem; }
+.contact-info .section-title { text-align: left; margin-bottom: 2rem; }
+.contact-details { margin-bottom: 3rem; }
+.contact-details p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; font-weight: 300; }
+.contact-details strong { color: var(--black); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.8rem; }
+.contact-map { width: 100%; height: 500px; background: var(--bg-alt); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.08); position: relative; }
+.contact-map::after { content: ''; position: absolute; inset: 0; pointer-events: none; border: 1px solid var(--gold); opacity: 0.3; margin: 10px; }
+.contact-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(100%) contrast(1.1) opacity(0.8); transition: filter 0.8s ease; }
+.contact-map:hover iframe { filter: grayscale(0%) contrast(1) opacity(1); }
 
 /* ── RODAPÉ ────────────────────── */
-footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px solid rgba(0,0,0,0.05); }
+footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nude); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto 4rem auto; }
-.footer-brand img { height: 60px; mix-blend-mode: multiply; margin-bottom: 1.5rem; }
-.footer-brand p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 300px; }
-.footer-col h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--black); margin-bottom: 1.5rem; font-weight: 600; }
+.footer-brand img { height: 65px; margin-bottom: 2rem; filter: brightness(0) invert(1) opacity(0.9); }
+.footer-brand p { color: #A0A0A0; font-size: 0.95rem; line-height: 1.8; max-width: 300px; font-weight: 300; }
+.footer-col h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 2rem; font-weight: 400; font-style: italic; }
 .footer-col ul { list-style: none; }
-.footer-col ul li { margin-bottom: 0.8rem; }
-.footer-col ul a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: var(--transition); text-transform: uppercase; letter-spacing: 0.1em; }
-.footer-col ul a:hover { color: var(--black); }
-.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.05); font-size: 0.7rem; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; }
-@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; } .footer-brand p { margin: 0 auto; } }
+.footer-col ul li { margin-bottom: 1rem; }
+.footer-col ul a { color: #A0A0A0; text-decoration: none; font-size: 0.85rem; transition: var(--transition); text-transform: uppercase; letter-spacing: 0.15em; }
+.footer-col ul a:hover { color: var(--gold); }
+.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; letter-spacing: 0.2em; color: #666; text-transform: uppercase; }
+
+/* ── RESPONSIVO ─────────────────────────────── */
+@media (max-width: 900px) {
+  .sobre-container, .reviews-container, .testimonials-grid, .contact-container { grid-template-columns: 1fr; text-align: center; }
+  .sobre-img-wrapper { padding: 0; } .sobre-img-wrapper::before { display: none; }
+  .contact-info .section-title { text-align: center; }
+  .gallery-item { grid-column: span 12 !important; height: 40vh !important; }
+  .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+  .footer-brand p { margin: 0 auto; }
+}
+@media (max-width: 768px) { .nav-links { display: none; } .hero-title { font-size: 4rem; } }
 </style>
 </head>
 <body>
 
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
 <nav id="nav">
   <a href="#" class="nav-logo"><img src="logo_oficial.jpeg" alt="Ellen Karine Beauty Studio"></a>
   <ul class="nav-links">
-    <li><a href="#sobre">Sobre o Salão</a></li>
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#ambiente">Ambiente</a></li>
+    <li><a href="#sobre">A Essência</a></li>
+    <li><a href="#servicos">Menu</a></li>
+    <li><a href="#ambiente">O Studio</a></li>
     <li><a href="#contato">Contato</a></li>
     <li>
-      <a href="https://www.instagram.com/ellenkarinebeautystudio/" target="_blank" title="Siga no Instagram" style="padding: 0.5rem 0;">
+      <a href="https://www.instagram.com/ellenkarinebeautystudio/" target="_blank" title="Instagram">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
       </a>
     </li>
@@ -186,20 +209,20 @@ footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px s
     Desperte a sua<br><em>melhor versão</em>
   </h1>
   <div class="reveal" style="transition-delay: 0.4s; margin-top: 1.5rem;">
-    <a href="https://wa.me/5531995812737" class="btn-primary" target="_blank">Agendar Atendimento</a>
+    <a href="https://wa.me/5531995812737" class="btn-primary" target="_blank">Agendar Experiência</a>
   </div>
 </section>
 
 <section id="sobre">
   <div class="sobre-container reveal">
-    <div>
+    <div class="sobre-img-wrapper">
       <img src="img_recepcao.jpeg" alt="Interior do Salão" class="sobre-img">
     </div>
     <div class="sobre-text">
       <div class="section-eyebrow">A Nossa Essência</div>
-      <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Sobre o <em>Salão</em></h2>
-      <p>No Ellen Karine Beauty Studio, acreditamos que a beleza vai muito além da estética. Trata-se de acolhimento, cuidado e de como você se sente ao se olhar no espelho.</p>
-      <p>O nosso espaço foi cuidadosamente planejado em Betim para oferecer uma experiência de luxo e tranquilidade. Com uma equipa de especialistas e produtos de alta qualidade, garantimos que cada momento aqui seja dedicado exclusivamente a realçar o que tem de melhor.</p>
+      <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Sobre o <em>Studio</em></h2>
+      <p>No Ellen Karine Beauty Studio, acreditamos que a beleza vai muito além da estética. Trata-se de acolhimento, cuidado e da forma incrível como se sente ao olhar-se no espelho.</p>
+      <p>O nosso espaço foi cuidadosamente planejado em Betim para oferecer uma experiência de luxo, calma e transformação. Com uma equipa de excelência e curadoria de produtos premium, garantimos que cada momento aqui seja dedicado exclusivamente a si.</p>
     </div>
   </div>
 </section>
@@ -214,27 +237,27 @@ footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px s
     <div class="svc-card reveal" onclick="abrirModal('modal-maquiagem')">
       <div class="svc-num">01</div>
       <h3>Maquiagem</h3>
-      <div class="svc-link-text">Ver detalhes →</div>
+      <div class="svc-link-text">Explorar <span style="font-size: 1.2rem;">→</span></div>
     </div>
     <div class="svc-card reveal" onclick="abrirModal('modal-cabelo')" style="transition-delay: 0.1s;">
       <div class="svc-num">02</div>
       <h3>Cabelo</h3>
-      <div class="svc-link-text">Ver detalhes →</div>
+      <div class="svc-link-text">Explorar <span style="font-size: 1.2rem;">→</span></div>
     </div>
     <div class="svc-card reveal" onclick="abrirModal('modal-cilios')" style="transition-delay: 0.2s;">
       <div class="svc-num">03</div>
-      <h3>Cílios e Sobrancelha</h3>
-      <div class="svc-link-text">Ver detalhes →</div>
+      <h3>Design de Olhar</h3>
+      <div class="svc-link-text">Explorar <span style="font-size: 1.2rem;">→</span></div>
     </div>
     <div class="svc-card reveal" onclick="abrirModal('modal-unhas')" style="transition-delay: 0.3s;">
       <div class="svc-num">04</div>
       <h3>Unhas</h3>
-      <div class="svc-link-text">Ver detalhes →</div>
+      <div class="svc-link-text">Explorar <span style="font-size: 1.2rem;">→</span></div>
     </div>
     <div class="svc-card reveal" onclick="abrirModal('modal-spa')" style="transition-delay: 0.4s;">
       <div class="svc-num">05</div>
       <h3>Spa dos Pés</h3>
-      <div class="svc-link-text">Ver detalhes →</div>
+      <div class="svc-link-text">Explorar <span style="font-size: 1.2rem;">→</span></div>
     </div>
   </div>
 </section>
@@ -245,12 +268,12 @@ footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px s
     <h2 class="section-title">O Nosso <em>Ambiente</em></h2>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item img-1 reveal"><img src="img_amplo.jpeg" alt="Visão Ampla do Estúdio"></div>
+    <div class="gallery-item img-1 reveal"><img src="img_amplo.jpeg" alt="Visão Ampla"></div>
     <div class="gallery-item img-2 reveal"><img src="img_recepcao.jpeg" alt="Recepção"></div>
     <div class="gallery-item img-3 reveal"><img src="img_fachada.jpeg" alt="Fachada"></div>
     <div class="gallery-item img-4 reveal"><img src="img_interno.jpeg" alt="Área Interna"></div>
     <div class="gallery-item img-5 reveal"><img src="img_espelhos.jpeg" alt="Espelhos"></div>
-    <div class="gallery-item img-6 reveal"><img src="img_cadeiras.jpeg" alt="Cadeiras de Atendimento"></div>
+    <div class="gallery-item img-6 reveal"><img src="img_cadeiras.jpeg" alt="Cadeiras"></div>
   </div>
 </section>
 
@@ -265,20 +288,20 @@ footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px s
       <svg class="google-logo" viewBox="0 0 90 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.8 14.1V18h6.5C18 20.3 15.6 23.6 11.8 23.6c-4.4 0-8.1-3.6-8.1-8.1s3.7-8.1 8.1-8.1c2 0 3.8.7 5.2 2l3-3C17.9 4.3 15.1 3 11.8 3 5.3 3 0 8.3 0 14.8s5.3 11.8 11.8 11.8c6.8 0 11.3-4.8 11.3-11.5 0-.8-.1-1.5-.2-2.2H11.8z" fill="#4285F4"/><path d="M32.8 9.5c-4 0-7.3 3.1-7.3 7.3 0 4.1 3.3 7.3 7.3 7.3 4 0 7.3-3.2 7.3-7.3 0-4.1-3.2-7.3-7.3-7.3zm0 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.3 0 4.2 1.9 4.2 4.4 0 2.5-1.9 4.4-4.2 4.4z" fill="#EA4335"/><path d="M48.8 9.5c-4 0-7.3 3.1-7.3 7.3 0 4.1 3.3 7.3 7.3 7.3 4 0 7.3-3.2 7.3-7.3 0-4.1-3.2-7.3-7.3-7.3zm0 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.3 0 4.2 1.9 4.2 4.4 0 2.5-1.9 4.4-4.2 4.4z" fill="#FBBC05"/><path d="M64 9.5c-3.8 0-7.1 3.1-7.1 7.3 0 4.1 3.2 7.3 7.1 7.3 2 0 3.6-.9 4.4-1.9v1.6c0 2.8-1.5 4.3-3.9 4.3-2 0-3.3-1.4-3.8-2.6l-2.7 1.1c.8 2 3 4.4 6.5 4.4 3.8 0 6.8-2.2 6.8-7.5V10h-2.9v1.5c-.8-.9-2.3-2-4.4-2zm.4 11.6c-2.3 0-4.2-1.9-4.2-4.4 0-2.5 1.9-4.4 4.2-4.4 2.2 0 4 1.9 4 4.4.1 2.5-1.7 4.4-4 4.4z" fill="#4285F4"/><path d="M74.9 3.5v20H78v-20h-3.1z" fill="#34A853"/><path d="M86.1 21.1c-1.8 0-3.1-.8-3.8-2.4l10.4-4.3-.3-.8c-.7-2-2.7-4.1-5.7-4.1-3.6 0-6.7 3-6.7 7.3 0 4.1 3.1 7.3 7.1 7.3 3.3 0 5.2-2 6.1-3.2l-2.3-1.5c-.9 1.4-2.1 2.1-4.8 2.1zm-.2-8.6c1.2 0 2.3.6 2.7 1.6l-6.4 2.6c0-2.6 1.9-4.2 3.7-4.2z" fill="#EA4335"/></svg>
       <div class="google-rating">5.0</div>
       <div class="google-stars">★★★★★</div>
-      <a href="https://g.page/r/CWYjzbGFV-khEBM/review" target="_blank" class="google-btn">Ver no Google</a>
+      <a href="https://g.page/r/CWYjzbGFV-khEBM/review" target="_blank" class="google-btn">Ler avaliações</a>
     </div>
     <div class="testimonials-grid">
       <div class="testi-box reveal" style="transition-delay: 0.2s;">
         <div>
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"A Ellen transformou a minha maquiagem de noiva numa obra de arte. Profissional impecável!"</p>
+          <p class="testi-text">"A Ellen transformou a minha maquiagem de noiva numa obra de arte. Profissional e de uma elegância impecável!"</p>
         </div>
         <div><div class="testi-author">Ana Paula M.</div></div>
       </div>
       <div class="testi-box reveal" style="transition-delay: 0.4s;">
         <div>
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"Ambiente perfeito e a profissional é extremamente cuidadosa. O resultado superou todas as expectativas."</p>
+          <p class="testi-text">"Um ambiente perfeito com profissionais extremamente cuidadosas. O resultado superou as mais altas expectativas."</p>
         </div>
         <div><div class="testi-author">Fernanda C.</div></div>
       </div>
@@ -289,13 +312,13 @@ footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px s
 <section id="contato">
   <div class="contact-container reveal">
     <div class="contact-info">
-      <div class="section-eyebrow">Visite o Estúdio</div>
+      <div class="section-eyebrow">A Sua Visita</div>
       <h2 class="section-title">Onde nos<br><em>encontrar</em></h2>
       <div class="contact-details">
-        <p><strong>Endereço:</strong><br>Rua Codó, 21, Loja 07<br>Bairro Filadélfia, Betim - MG</p>
-        <p style="margin-top: 1rem;"><strong>WhatsApp:</strong><br>(31) 99581-2737</p>
+        <p><strong>Endereço</strong><br>Rua Codó, 21, Loja 07<br>Bairro Filadélfia, Betim - MG</p>
+        <p style="margin-top: 1.5rem;"><strong>WhatsApp</strong><br>(31) 99581-2737</p>
       </div>
-      <a href="https://www.google.com/maps/dir//Ellen+Karine+Beauty+Studio+-+R.+Cod%C3%B3,+21+-+loja+07+-+Filad%C3%A9lfia,+Betim+-+MG,+32670-134/@-19.9678125,-44.2001562,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x0:0x21e95781b1cd2366!2m2!1d-44.2001562!2d-19.9678125" target="_blank" class="btn-primary btn-outline">Traçar Rota no GPS</a>
+      <a href="https://www.google.com/maps/dir//Ellen+Karine+Beauty+Studio+-+R.+Cod%C3%B3,+21+-+loja+07+-+Filad%C3%A9lfia,+Betim+-+MG,+32670-134/@-19.9678125,-44.2001562,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x0:0x21e95781b1cd2366!2m2!1d-44.2001562!2d-19.9678125" target="_blank" class="btn-primary">Traçar Rota GPS</a>
     </div>
     <div class="contact-map">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.000000000000!2d-44.202345!3d-19.967812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x21e95781b1cd2366!2sEllen%20Karine%20Beauty%20Studio!5e0!3m2!1spt-BR!2sbr!4v1680000000000" allowfullscreen="" loading="lazy"></iframe>
@@ -304,50 +327,49 @@ footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px s
 </section>
 
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand reveal">
+  <div class="footer-grid reveal">
+    <div class="footer-brand">
       <img src="logo_oficial.jpeg" alt="Logo">
-      <p>Elevando a sua autoestima através de técnicas avançadas e atendimento de excelência.</p>
+      <p>Elevando a sua autoestima através de técnicas avançadas e um atendimento de excelência incomparável.</p>
     </div>
-    <div class="footer-col reveal" style="transition-delay: 0.1s;">
+    <div class="footer-col">
       <h4>Navegação</h4>
-      <ul><li><a href="#home">Início</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#servicos">Serviços</a></li></ul>
+      <ul><li><a href="#home">Início</a></li><li><a href="#sobre">A Essência</a></li><li><a href="#servicos">Menu de Serviços</a></li></ul>
     </div>
-    <div class="footer-col reveal" style="transition-delay: 0.2s;">
-      <h4>Contato</h4>
-      <ul><li><a href="https://wa.me/5531995812737" target="_blank">WhatsApp</a></li><li><a href="#contato">Localização</a></li></ul>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul><li><a href="https://wa.me/5531995812737" target="_blank">Agendamento</a></li><li><a href="#contato">Localização</a></li></ul>
     </div>
-    <div class="footer-col reveal" style="transition-delay: 0.3s;">
-      <h4>Redes</h4>
+    <div class="footer-col">
+      <h4>Social</h4>
       <ul><li><a href="https://www.instagram.com/ellenkarinebeautystudio/" target="_blank">Instagram</a></li></ul>
     </div>
   </div>
-  <div class="footer-bottom reveal">© 2026 Ellen Karine Beauty Studio.</div>
+  <div class="footer-bottom reveal">© 2026 Ellen Karine Beauty Studio. Criado para inspirar.</div>
 </footer>
-
 
 <div class="modal-overlay" id="modal-maquiagem">
   <div class="modal-nav">
     <img src="logo_oficial.jpeg" alt="Logo" style="height: 40px; mix-blend-mode: multiply;">
-    <button class="btn-fechar" onclick="fecharModal('modal-maquiagem')">← Voltar</button>
+    <button class="btn-fechar" onclick="fecharModal('modal-maquiagem')"><span>←</span> Fechar</button>
   </div>
   <div class="modal-content-wrapper">
-    <div class="servico-header">
-      <div class="servico-eyebrow">Especialidade</div>
-      <h1 class="servico-title">Maquiagem</h1>
+    <div class="section-header">
+      <div class="section-eyebrow">Especialidade</div>
+      <h1 class="section-title">Maquiagem</h1>
     </div>
     <div class="servico-container">
       <div><img src="img_espelhos.jpeg" alt="Maquiagem" class="servico-img"></div>
       <div class="servico-texto">
         <p>A maquiagem é uma poderosa ferramenta de expressão. No nosso estúdio, cada produção é pensada para harmonizar com a sua identidade, o seu tom de pele e o formato do seu rosto.</p>
-        <p>Trabalhamos com produtos de alta durabilidade e marcas premium, garantindo que permaneça impecável do início ao fim do seu evento.</p>
+        <p>Trabalhamos exclusivamente com produtos de alta durabilidade e marcas de luxo, garantindo que permaneça impecável do início ao fim do seu evento.</p>
         <ul>
           <li>Maquiagem Social para Eventos</li>
           <li>Produção Completa para Noivas</li>
           <li>Madrinhas e Formandas</li>
           <li>Maquiagem Artística e Editorial</li>
         </ul>
-        <a href="https://wa.me/5531995812737?text=Olá!%20Gostaria%20de%20agendar%20uma%20Maquiagem." class="btn-primary" target="_blank">Agendar Maquiagem</a>
+        <a href="https://wa.me/5531995812737?text=Olá!%20Gostaria%20de%20agendar%20uma%20Maquiagem." class="btn-primary" target="_blank">Agendar Serviço</a>
       </div>
     </div>
   </div>
@@ -356,24 +378,24 @@ footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px s
 <div class="modal-overlay" id="modal-cabelo">
   <div class="modal-nav">
     <img src="logo_oficial.jpeg" alt="Logo" style="height: 40px; mix-blend-mode: multiply;">
-    <button class="btn-fechar" onclick="fecharModal('modal-cabelo')">← Voltar</button>
+    <button class="btn-fechar" onclick="fecharModal('modal-cabelo')"><span>←</span> Fechar</button>
   </div>
   <div class="modal-content-wrapper">
-    <div class="servico-header">
-      <div class="servico-eyebrow">Especialidade</div>
-      <h1 class="servico-title">Cabelo</h1>
+    <div class="section-header">
+      <div class="section-eyebrow">Especialidade</div>
+      <h1 class="section-title">Cabelo</h1>
     </div>
     <div class="servico-container">
       <div><img src="img_estacoes.jpeg" alt="Cabelo" class="servico-img"></div>
       <div class="servico-texto">
         <p>Cuidamos da saúde e da estética dos seus fios com os melhores produtos do mercado. O nosso objetivo é fazer com que o seu cabelo reflita a sua personalidade com brilho e vitalidade.</p>
-        <p>Seja para uma mudança radical com coloração ou um tratamento profundo para recuperar a estrutura capilar, a nossa equipa está pronta para a atender.</p>
+        <p>Seja para uma mudança radical com coloração ou um tratamento profundo para recuperar a estrutura capilar, a nossa equipa de especialistas está à sua disposição.</p>
         <ul>
-          <li>Corte e Finalização</li>
-          <li>Coloração e Madeixas</li>
-          <li>Tratamentos e Cronograma Capilar</li>
+          <li>Corte e Finalização de Luxo</li>
+          <li>Coloração, Madeixas e Iluminação</li>
+          <li>Tratamentos Premium e Cronograma</li>
         </ul>
-        <a href="https://wa.me/5531995812737?text=Olá!%20Gostaria%20de%20agendar%20um%20serviço%20de%20Cabelo." class="btn-primary" target="_blank">Agendar Cabelo</a>
+        <a href="https://wa.me/5531995812737?text=Olá!%20Gostaria%20de%20agendar%20um%20serviço%20de%20Cabelo." class="btn-primary" target="_blank">Agendar Serviço</a>
       </div>
     </div>
   </div>
@@ -382,24 +404,24 @@ footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px s
 <div class="modal-overlay" id="modal-cilios">
   <div class="modal-nav">
     <img src="logo_oficial.jpeg" alt="Logo" style="height: 40px; mix-blend-mode: multiply;">
-    <button class="btn-fechar" onclick="fecharModal('modal-cilios')">← Voltar</button>
+    <button class="btn-fechar" onclick="fecharModal('modal-cilios')"><span>←</span> Fechar</button>
   </div>
   <div class="modal-content-wrapper">
-    <div class="servico-header">
-      <div class="servico-eyebrow">Especialidade</div>
-      <h1 class="servico-title">Cílios e Sobrancelha</h1>
+    <div class="section-header">
+      <div class="section-eyebrow">Especialidade</div>
+      <h1 class="section-title">Cílios & Sobrancelha</h1>
     </div>
     <div class="servico-container">
       <div><img src="img_cadeiras.jpeg" alt="Cílios" class="servico-img"></div>
       <div class="servico-texto">
-        <p>O design perfeito para o seu olhar. Harmonizamos o seu rosto com técnicas que trazem naturalidade, volume e uma expressão marcante.</p>
-        <p>Os nossos procedimentos de Lash Lifting e Brow Lamination são ideais para quem procura praticidade no dia a dia, mantendo os fios alinhados sem necessidade de maquiagem.</p>
+        <p>O design perfeito para o seu olhar. Harmonizamos o seu rosto com técnicas de visagismo que trazem naturalidade, volume e uma expressão marcante.</p>
+        <p>Os nossos procedimentos de Lash Lifting e Brow Lamination são ideais para quem procura praticidade sem abrir mão do requinte, mantendo os fios alinhados.</p>
         <ul>
-          <li>Lash Lifting</li>
+          <li>Lash Lifting Nutritivo</li>
           <li>Brow Lamination</li>
-          <li>Design com Henna</li>
+          <li>Design de Sobrancelha com Henna</li>
         </ul>
-        <a href="https://wa.me/5531995812737?text=Olá!%20Gostaria%20de%20agendar%20Cílios/Sobrancelha." class="btn-primary" target="_blank">Agendar Design de Olhar</a>
+        <a href="https://wa.me/5531995812737?text=Olá!%20Gostaria%20de%20agendar%20Cílios/Sobrancelha." class="btn-primary" target="_blank">Agendar Serviço</a>
       </div>
     </div>
   </div>
@@ -408,24 +430,24 @@ footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px s
 <div class="modal-overlay" id="modal-unhas">
   <div class="modal-nav">
     <img src="logo_oficial.jpeg" alt="Logo" style="height: 40px; mix-blend-mode: multiply;">
-    <button class="btn-fechar" onclick="fecharModal('modal-unhas')">← Voltar</button>
+    <button class="btn-fechar" onclick="fecharModal('modal-unhas')"><span>←</span> Fechar</button>
   </div>
   <div class="modal-content-wrapper">
-    <div class="servico-header">
-      <div class="servico-eyebrow">Especialidade</div>
-      <h1 class="servico-title">Unhas</h1>
+    <div class="section-header">
+      <div class="section-eyebrow">Especialidade</div>
+      <h1 class="section-title">Nail Design</h1>
     </div>
     <div class="servico-container">
       <div><img src="img_interno.jpeg" alt="Unhas" class="servico-img"></div>
       <div class="servico-texto">
-        <p>Alongamentos duradouros e esmaltação impecável. As suas mãos merecem um cuidado premium que reflete a sua personalidade.</p>
-        <p>Trabalhamos com materiais antialérgicos e técnicas modernas para garantir não apenas a beleza, mas a saúde da sua unha natural.</p>
+        <p>Alongamentos com durabilidade superior e esmaltação impecável. As suas mãos merecem um cuidado premium que se reflete em cada detalhe.</p>
+        <p>Trabalhamos com materiais antialérgicos rigorosamente selecionados e técnicas modernas para garantir não apenas a estética, mas a saúde da sua unha natural.</p>
         <ul>
-          <li>Banho de Gel / Blindagem</li>
-          <li>Alongamento em Fibra</li>
-          <li>Nail Art e Manicure Tradicional</li>
+          <li>Banho de Gel / Blindagem Premium</li>
+          <li>Alongamento em Fibra de Vidro</li>
+          <li>Nail Art e Esmaltação em Gel</li>
         </ul>
-        <a href="https://wa.me/5531995812737?text=Olá!%20Gostaria%20de%20agendar%20serviço%20de%20Unhas." class="btn-primary" target="_blank">Agendar Unhas</a>
+        <a href="https://wa.me/5531995812737?text=Olá!%20Gostaria%20de%20agendar%20serviço%20de%20Unhas." class="btn-primary" target="_blank">Agendar Serviço</a>
       </div>
     </div>
   </div>
@@ -434,35 +456,53 @@ footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px s
 <div class="modal-overlay" id="modal-spa">
   <div class="modal-nav">
     <img src="logo_oficial.jpeg" alt="Logo" style="height: 40px; mix-blend-mode: multiply;">
-    <button class="btn-fechar" onclick="fecharModal('modal-spa')">← Voltar</button>
+    <button class="btn-fechar" onclick="fecharModal('modal-spa')"><span>←</span> Fechar</button>
   </div>
   <div class="modal-content-wrapper">
-    <div class="servico-header">
-      <div class="servico-eyebrow">Especialidade</div>
-      <h1 class="servico-title">Spa dos Pés</h1>
+    <div class="section-header">
+      <div class="section-eyebrow">Especialidade</div>
+      <h1 class="section-title">Spa dos Pés</h1>
     </div>
     <div class="servico-container">
       <div><img src="img_amplo.jpeg" alt="Spa" class="servico-img"></div>
       <div class="servico-texto">
-        <p>Um momento de relaxamento profundo e renovação. Tratamos a saúde dos seus pés com hidratação intensiva e técnicas de esfoliação.</p>
-        <p>Ideal para aliviar o cansaço do dia a dia e manter a pele macia, nutrida e bem cuidada.</p>
+        <p>Um momento de relaxamento profundo e renovação. Tratamos a saúde e beleza dos seus pés com hidratação intensiva e técnicas apuradas de esfoliação.</p>
+        <p>Ideal para aliviar a tensão do dia a dia e manter a pele com toque de seda, nutrida e visivelmente descansada.</p>
         <ul>
-          <li>Esfoliação e Hidratação Intensiva</li>
+          <li>Esfoliação e Hidratação Profunda</li>
           <li>Remoção de Calosidades</li>
-          <li>Massagem Relaxante</li>
+          <li>Reflexologia e Massagem Relaxante</li>
         </ul>
-        <a href="https://wa.me/5531995812737?text=Olá!%20Gostaria%20de%20agendar%20um%20Spa%20dos%20Pés." class="btn-primary" target="_blank">Agendar Spa</a>
+        <a href="https://wa.me/5531995812737?text=Olá!%20Gostaria%20de%20agendar%20um%20Spa%20dos%20Pés." class="btn-primary" target="_blank">Agendar Serviço</a>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  // Controla o fundo do menu ao fazer scroll
+  // LÓGICA DO CURSOR PERSONALIZADO (Só aparece em computadores)
+  const cursorDot = document.getElementById('cursorDot');
+  const cursorRing = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursorDot.style.left = `${mouseX}px`; cursorDot.style.top = `${mouseY}px`;
+  });
+
+  function animateCursor() {
+    ringX += (mouseX - ringX) * 0.15; ringY += (mouseY - ringY) * 0.15;
+    cursorRing.style.left = `${ringX}px`; cursorRing.style.top = `${ringY}px`;
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // EFEITO DO MENU AO ROLAR A PÁGINA
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); });
   
-  // Controla a entrada suave dos elementos
+  // ANIMAÇÃO DE ENTRADA SUAVE (SCROLL REVEAL)
   const reveals = document.querySelectorAll('.reveal');
   const revealOnScroll = () => {
     const windowHeight = window.innerHeight;
@@ -472,15 +512,14 @@ footer { background: var(--bg-nude); padding: 5rem 6% 2rem 6%; border-top: 1px s
   };
   window.addEventListener('scroll', revealOnScroll); revealOnScroll();
 
-  // FUNÇÕES PARA ABRIR E FECHAR AS "PÁGINAS" (MODAIS)
+  // ABRIR E FECHAR OS SERVIÇOS (MODAIS)
   function abrirModal(idModal) {
     document.getElementById(idModal).classList.add('active');
-    document.body.style.overflow = 'hidden'; // Impede o fundo de rolar
+    document.body.style.overflow = 'hidden'; 
   }
-
   function fecharModal(idModal) {
     document.getElementById(idModal).classList.remove('active');
-    document.body.style.overflow = 'auto'; // Volta o scroll normal
+    document.body.style.overflow = 'auto'; 
   }
 </script>
 </body>
