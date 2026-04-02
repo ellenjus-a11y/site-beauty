@@ -107,10 +107,9 @@ section { padding: 9rem 6%; position: relative; }
 .modal-content-wrapper { padding: 6rem 6% 8rem 6%; }
 .servico-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1200px; margin: 0 auto; align-items: center; }
 
-/* Slider de Imagens */
-.slider-container { width: 100%; height: 65vh; min-height: 450px; position: relative; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); overflow: hidden; background: #EEE; }
-.slide { width: 100%; height: 100%; object-fit: cover; object-position: center top; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
-.slide.active { opacity: 1; }
+/* Slider de Imagens corrigido para não cortar */
+.slider-container { width: 100%; height: 65vh; min-height: 450px; position: relative; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); overflow: hidden; background: transparent; }
+.slide { width: 100%; height: 100%; object-fit: contain; object-position: center; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
 
 .servico-texto p { font-size: 1.15rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 2rem; font-weight: 300; }
 .servico-texto ul { list-style: none; margin-bottom: 3rem; }
