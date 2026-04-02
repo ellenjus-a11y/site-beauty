@@ -98,7 +98,7 @@ section { padding: 9rem 6%; position: relative; }
 .svc-card:hover .svc-num, .svc-card:hover h3 { color: var(--gold); }
 .svc-card:hover .svc-link-text { color: var(--gold); gap: 10px; }
 
-/* ── MODAIS DOS SERVIÇOS (AS ABAS) E SLIDER ── */
+/* ── MODAIS DOS SERVIÇOS E SLIDER ── */
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-nude); z-index: 2000; transform: translateY(100%); transition: transform 0.8s cubic-bezier(0.8, 0, 0.2, 1); overflow-y: auto; opacity: 0; visibility: hidden; }
 .modal-overlay.active { transform: translateY(0); opacity: 1; visibility: visible; }
 .modal-nav { padding: 1.5rem 6%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 20px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 10; }
@@ -107,8 +107,8 @@ section { padding: 9rem 6%; position: relative; }
 .modal-content-wrapper { padding: 6rem 6% 8rem 6%; }
 .servico-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1200px; margin: 0 auto; align-items: center; }
 
-/* NOVO: Slider de Imagens */
-.slider-container { width: 100%; height: 65vh; min-height: 450px; position: relative; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); overflow: hidden; }
+/* Slider de Imagens */
+.slider-container { width: 100%; height: 65vh; min-height: 450px; position: relative; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); overflow: hidden; background: #EEE; }
 .slide { width: 100%; height: 100%; object-fit: cover; object-position: center top; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
 .slide.active { opacity: 1; }
 
@@ -135,7 +135,7 @@ section { padding: 9rem 6%; position: relative; }
 .reviews-container { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: stretch; }
 .google-card { background: var(--bg-white); padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column; text-align: center; align-items: center; transition: var(--transition); }
 .google-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(196, 164, 107, 0.1); }
-.google-card-img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 2rem; }
+.google-card-img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 2rem; border-radius: 4px; }
 .google-logo { width: 90px; margin-bottom: 1.5rem; }
 .google-rating { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; line-height: 1; color: var(--black); margin-bottom: 0.5rem; }
 .google-stars { color: var(--gold); font-size: 1.5rem; margin-bottom: 2rem; letter-spacing: 3px; }
@@ -155,7 +155,7 @@ section { padding: 9rem 6%; position: relative; }
 .contact-details { margin-bottom: 3rem; }
 .contact-details p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; font-weight: 300; }
 .contact-details strong { color: var(--black); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.8rem; }
-.contact-map { width: 100%; height: 500px; background: var(--bg-alt); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.08); position: relative; }
+.contact-map { width: 100%; height: 500px; background: var(--bg-alt); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.08); position: relative; border-radius: 4px; }
 .contact-map::after { content: ''; position: absolute; inset: 0; pointer-events: none; border: 1px solid var(--gold); opacity: 0.3; margin: 10px; }
 .contact-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(100%) contrast(1.1) opacity(0.8); transition: filter 0.8s ease; }
 .contact-map:hover iframe { filter: grayscale(0%) contrast(1) opacity(1); }
@@ -225,7 +225,7 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
       <div class="section-eyebrow">A Nossa Essência</div>
       <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Sobre o <em>Studio</em></h2>
       <p>No Ellen Karine Beauty Studio, acreditamos que a beleza vai muito além da estética. Trata-se de acolhimento, cuidado e da forma incrível como se sente ao olhar-se no espelho.</p>
-      <p>O nosso espaço foi cuidadosamente planejado em Betim para oferecer uma experiência de luxo, calma e transformação. Com uma equipe de excelência e curadoria de produtos premium, garantimos que cada momento aqui seja dedicado exclusivamente a você.</p>
+      <p>O nosso espaço foi cuidadosamente planejado em Betim para oferecer uma experiência de luxo, calma e transformação. Com uma equipa de excelência e curadoria de produtos premium, garantimos que cada momento aqui seja dedicado exclusivamente a si.</p>
     </div>
   </div>
 </section>
@@ -367,6 +367,10 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
         <img src="maquiagem1.jpg" alt="Maquiagem" class="slide active">
         <img src="maquiagem2.jpg" alt="Maquiagem" class="slide">
         <img src="maquiagem3.jpg" alt="Maquiagem" class="slide">
+        <img src="maquiagem4.jpg" alt="Maquiagem" class="slide">
+        <img src="maquiagem5.jpg" alt="Maquiagem" class="slide">
+        <img src="maquiagem6.jpg" alt="Maquiagem" class="slide">
+        <img src="maquiagem7.jpg" alt="Maquiagem" class="slide">
       </div>
 
       <div class="servico-texto">
@@ -429,9 +433,9 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
     <div class="servico-container">
       
       <div class="slider-container">
-        <img src="cilios1.jpg" alt="Cílios" class="slide active">
-        <img src="cilios2.jpg" alt="Cílios" class="slide">
-        <img src="cilios3.jpg" alt="Cílios" class="slide">
+        <img src="cilios1.jpg" alt="Cílios e Sobrancelhas" class="slide active">
+        <img src="cilios2.jpg" alt="Cílios e Sobrancelhas" class="slide">
+        <img src="cilios3.jpg" alt="Cílios e Sobrancelhas" class="slide">
       </div>
 
       <div class="servico-texto">
@@ -555,7 +559,7 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
     document.body.style.overflow = 'auto'; 
   }
 
-  // LÓGICA DO SLIDER (Fade Automático)
+  // LÓGICA DO SLIDER (Troca automática de fotos)
   function startSliders() {
     const sliders = document.querySelectorAll('.slider-container');
     sliders.forEach(slider => {
@@ -566,7 +570,7 @@ footer { background: var(--black); padding: 6rem 6% 2rem 6%; color: var(--bg-nud
           slides[current].classList.remove('active');
           current = (current + 1) % slides.length;
           slides[current].classList.add('active');
-        }, 4000); // Troca a foto a cada 4 segundos
+        }, 4000); // A imagem troca a cada 4 segundos
       }
     });
   }
